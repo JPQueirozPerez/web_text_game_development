@@ -11,6 +11,7 @@ import java.util.List;
 @ToString
 public class Inventory {
     private int capacity;
+    private int initialCapacity;
     private List<Item> items;
 
 

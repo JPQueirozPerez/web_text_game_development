@@ -55,6 +55,12 @@ public class FightView {
                 System.out.println("You need to attack again");
                 break;
             }
+            case "12": {
+                System.out.println("You have gained "+enemy.getExperiencePoints()+" experience points!");
+            }
+            case "13": {
+                System.out.println("You need "+(player.getMaxExperiencePoints()-player.getExperiencePoints())+" more points to achieve level "+(player.getLevel()+1)+"!");
+            }
         }
     }
 

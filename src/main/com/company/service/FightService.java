@@ -55,9 +55,7 @@ public class FightService {
     public static void fightResult(NPC enemy, Player player, String nextTurn) {
         if (player.getHealthPoints() <= 0) IOView.mainLoopView();
         else if (enemy.getHealthPoints() <= 0) {
-            levelUp(player);
-            FightView.fightingMessages("9", enemy, player);
-            FightView.fightingMessages("10", enemy, player);
+            addExperience(player, enemy);
             Item newItem = enemy.getTreasure();
             player.setInventory(InventoryController.addItemToInventory(player.getInventory().getItems(), player.getInventory(), newItem));
             CharacterService.addingMoney(player, enemy);
@@ -87,18 +85,12 @@ public class FightService {
         return (result >= probability);
     }
 
-    public static void levelUp(Player player) {
-        player.setLevel(player.getLevel() + 1);
-        player.setMaxHealthPoints(player.getMaxHealthPoints() + valueGained() * 5);
-        player.setStrength(player.getStrength() + valueGained());
-        player.setDefense(player.getDefense() + valueGained());
-        player.setSpeed(player.getSpeed() + valueGained());
-        player.setDexterity(player.getDexterity() + valueGained());
-        CharacterService.setPlayerTotalCharacteristics(player);
+    public static void addExperience(Player player, NPC enemy) {
+        player.setExperiencePoints(player.getExperiencePoints()+enemy.getExperiencePoints());
+        FightView.fightingMessages("12", enemy, player);
+        if(player.getExperiencePoints()>=player.getMaxExperiencePoints()*player.getLevel()) CharacterService.levelUp(player);
+        FightView.fightingMessages("13", enemy, player); //TODO
     }
 
-    public static int valueGained() {
-        Random r = new Random();
-        return r.nextInt(3 - 1) + 1;
-    }
+
 }

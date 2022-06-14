@@ -15,7 +15,7 @@ public class ShopController {
 
     public static void shopping(Player player, int value) {
         List<Item> items = new ArrayList<>(200);
-        Inventory shopInventory = new Inventory(200, items);
+        Inventory shopInventory = new Inventory(200, 200, items);
         for (int i = 0; i < 100; i++) {
             Item newItem = createItem();
             if (compareItems(shopInventory.getItems(), newItem)){

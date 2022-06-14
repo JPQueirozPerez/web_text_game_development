@@ -19,10 +19,10 @@ public class InventoryController {
                 items.add(newItem);
                 newItem.setQuantity(1);
 //                items.replace(newItem, items.get(newItem) + 1);
-                if(inventory.getCapacity() == 10) InventoryView.addItemToInventoryMessage("1", newItem);
+                if(inventory.getInitialCapacity() == 10) InventoryView.addItemToInventoryMessage("2", newItem);
             } else {
                 items.stream().filter(z -> z.getName().equals(name)).forEach( x -> x.setQuantity(x.getQuantity()+1));
-                if(inventory.getCapacity() == 10) InventoryView.addItemToInventoryMessage("2", newItem);
+                if(inventory.getInitialCapacity() == 10) InventoryView.addItemToInventoryMessage("1", newItem);
             }
             inventory.setItems(items);
             inventory.setCapacity(inventory.getCapacity() - 1);

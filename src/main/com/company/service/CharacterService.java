@@ -4,8 +4,10 @@ import main.com.company.model.Inventory;
 import main.com.company.model.Item;
 import main.com.company.model.NPC;
 import main.com.company.model.Player;
+import main.com.company.view.FightView;
 
 import java.util.List;
+import java.util.Random;
 
 import static main.com.company.view.CharacterView.moneyMessage;
 
@@ -29,5 +31,22 @@ public class CharacterService {
         player.getInventory().setItems(items);
         playerInventory.setCapacity(playerInventory.getCapacity() - 1);
         return player;
+    }
+
+    public static void levelUp(Player player){
+        player.setLevel(player.getLevel() + 1);
+        player.setMaxHealthPoints(player.getMaxHealthPoints() + valueGained() * 5);
+        player.setStrength(player.getStrength() + valueGained());
+        player.setDefense(player.getDefense() + valueGained());
+        player.setSpeed(player.getSpeed() + valueGained());
+        player.setDexterity(player.getDexterity() + valueGained());
+        setPlayerTotalCharacteristics(player);
+        FightView.fightingMessages("9", null, player);
+        FightView.fightingMessages("10", null, player);
+    }
+
+    public static int valueGained() {
+        Random r = new Random();
+        return r.nextInt(3 - 1) + 1;
     }
 }
