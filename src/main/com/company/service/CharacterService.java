@@ -34,6 +34,11 @@ public class CharacterService {
     }
 
     public static void levelUp(Player player){
+        if(player.getExperiencePoints() == player.getMaxExperiencePoints()*player.getLevel()){
+            player.setExperiencePoints(0);
+        }else if(player.getExperiencePoints() > player.getMaxExperiencePoints()*player.getLevel()){
+            player.setExperiencePoints(player.getExperiencePoints() - player.getMaxExperiencePoints()*player.getLevel());
+        }
         player.setLevel(player.getLevel() + 1);
         player.setMaxHealthPoints(player.getMaxHealthPoints() + valueGained() * 5);
         player.setStrength(player.getStrength() + valueGained());
