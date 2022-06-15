@@ -9,7 +9,7 @@ public class CraftService {
 
     public static void crafting(Player player, int necessaryQuantity, Item craftedItem, Item ingredientItem, int craftQuantity) {
         for (int i = 0; i < craftQuantity; i++) {
-            InventoryController.addItemToInventory(player.getInventory().getItems(), player.getInventory(), craftedItem);
+            InventoryController.addItemToInventory(player.getInventory(), craftedItem);
         }
         InventoryController.removeItemFromInventory(player.getInventory(), ingredientItem, necessaryQuantity);
     }

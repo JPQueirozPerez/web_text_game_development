@@ -12,6 +12,7 @@ public class FightController {
         int level = player.getLevel();
         NPC enemy = CharacterController.createEnemyPlaceholder(level);
         FightView.enemyPresentationMessage(enemy);
+        FightView.enemyLevel(enemy.getLevel());
         initialTurn(enemy, player, true);
         return player;
     }

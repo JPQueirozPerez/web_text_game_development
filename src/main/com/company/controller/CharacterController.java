@@ -18,7 +18,7 @@ CharacterController {
         List<Item> items = new ArrayList<>();
         Inventory playerInventory = new Inventory(10, 10, items);
         List<EquippableItem> equipments = new ArrayList<>();
-        Equipment playerEquipment = new Equipment(0, 0, 0, 0, equipments);
+        Equipment playerEquipment = new Equipment(0, 0, 0, 0, false, false, false, false, false, false, equipments);
         Player newPlayer = new Player();
         switch (charClass) {
             case "Cleric": {
@@ -88,47 +88,47 @@ CharacterController {
 
         switch (value) {
             case 1: {
-                enemy = new NPC("Goblin", level, createItem(), 20 + (level * 4), 20 + (level * 4), 20 + (level * 3), 5 + level, 25 + (level * 4), 25 + (level * 2), null, 5, 5 * level, 0);
+                enemy = new NPC("Goblin", level, createItem(), 20 + (level * 4), 20 + (level * 4), 20 + (level * 3), 5 + level, 25 + (level * 4), 25 + (level * 2), null, 5, 40 * level, 0);
                 break;
             }
             case 2: {
-                enemy = new NPC("Wolf", level, fur, 10 + level, 10 + level, 10 + (level * 2), 15 + (level * 2), 35 + (level * 4), 5 + level, "beast", 0, 5, 0);
+                enemy = new NPC("Wolf", level, fur, 10 + level, 10 + level, 10 + (level * 2), 15 + (level * 2), 35 + (level * 4), 5 + level, "beast", 0, 20 * level, 0);
                 break;
             }
             case 3: {
-                enemy = new NPC("Burglar", level, createItem(), 25 + (level * 2), 25 + (level * 2), 15 + (level * 2), 15 + (level * 2), 15 + (level * 2), 15 + (level * 2), null, 20, 5, 0);
+                enemy = new NPC("Burglar", level, createItem(), 25 + (level * 2), 25 + (level * 2), 15 + (level * 2), 15 + (level * 2), 15 + (level * 2), 15 + (level * 2), null, 20, 30 * level, 0);
                 break;
             }
             case 4: {
-                enemy = new NPC("Witch", level, createItem(), 20 + (level * 3), 20 + (level * 3), 10 + level, 15 + level , 25 + (level * 2), 15 + (level * 2), null, 5, 5, 0);
+                enemy = new NPC("Witch", level, createItem(), 20 + (level * 3), 20 + (level * 3), 10 + level, 15 + level , 25 + (level * 2), 15 + (level * 2), null, 5, 25 * level, 0);
                 break;
             }
             case 5: {
-                enemy = new NPC("Ratman", level, fur, 25 + level, 25 + level, 20 + (level * 2), 10 + level, 20 + (level * 2), 10 + level, "beast", 0, 5, 0);
+                enemy = new NPC("Ratman", level, fur, 25 + level, 25 + level, 20 + (level * 2), 10 + level, 20 + (level * 2), 10 + level, "beast", 0, 20 * level, 0);
                 break;
             }
             case 6: {
-                enemy = new NPC("Wild boar", level, fur, 10 + level, 10 + level, 10 + level, 10 + level, 25 + (level * 3), 10 + level, "beast", 0, 5, 0);
+                enemy = new NPC("Wild boar", level, fur, 10 + level, 10 + level, 10 + level, 10 + level, 25 + (level * 3), 10 + level, "beast", 0, 15 * level, 0);
                 break;
             }
             case 7: {
-                enemy = new NPC("Vampire", level, createItem(), 40 + (level * 4), 40 + (level * 4), 20 + (level * 2), 10 + level, 15 + level, 15 + level, null, 10, 5, 0);
+                enemy = new NPC("Vampire", level, createItem(), 40 + (level * 4), 40 + (level * 4), 20 + (level * 2), 10 + level, 15 + level, 15 + level, null, 10, 50 * level, 0);
                 break;
             }
             case 8: {
-                enemy = new NPC("Wendigo", level, fur, 25 + (level * 2), 25 + (level * 2), 25 + (level * 3), 5 + level, 25 + (level * 3), 5 + level, "beast", 0, 5, 0);
+                enemy = new NPC("Wendigo", level, fur, 25 + (level * 2), 25 + (level * 2), 25 + (level * 3), 5 + level, 25 + (level * 3), 5 + level, "beast", 0, 30 * level, 0);
                 break;
             }
             case 9: {
-                enemy = new NPC("Golem", level, clay, 45 + (level * 5), 45 + (level * 5), 35 + (level * 3), 25 + (level * 2), 10 + level, 10 + level, null, 0, 5, 0);
+                enemy = new NPC("Golem", level, clay, 45 + (level * 5), 45 + (level * 5), 35 + (level * 3), 25 + (level * 2), 10 + level, 10 + level, null, 0, 60 * level, 0);
                 break;
             }
             case 10: {
-                enemy = new NPC("Cave lion", level, fur, 15 + level, 15 + level, 15 + level, 15 + level, 25 + (level * 2), 5 + (level * 2), "beast", 0, 5, 0);
+                enemy = new NPC("Cave lion", level, fur, 15 + level, 15 + level, 15 + level, 15 + level, 25 + (level * 2), 5 + (level * 2), "beast", 0, 15 * level, 0);
                 break;
             }
             default: {
-                enemy = new NPC("Soldier", level, createItem(), 50 + (level * 4), 50 + (level * 4), 25 + (level * 3), 15 + (level * 2), 5 + level, 20 + (level * 2), null, 15, 5, 0);
+                enemy = new NPC("Soldier", level, createItem(), 50 + (level * 4), 50 + (level * 4), 25 + (level * 3), 15 + (level * 2), 5 + level, 20 + (level * 2), null, 15, 60 * level, 0);
                 break;
             }
         }

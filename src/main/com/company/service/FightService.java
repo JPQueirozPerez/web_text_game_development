@@ -57,7 +57,7 @@ public class FightService {
         else if (enemy.getHealthPoints() <= 0) {
             addExperience(player, enemy);
             Item newItem = enemy.getTreasure();
-            player.setInventory(InventoryController.addItemToInventory(player.getInventory().getItems(), player.getInventory(), newItem));
+            player.setInventory(InventoryController.addItemToInventory(player.getInventory(), newItem));
             CharacterService.addingMoney(player, enemy);
             IOView.gameLoopView(player);
         } else {
@@ -79,8 +79,8 @@ public class FightService {
         int dexterityDif = attacker.getDexterity() - defender.getDexterity();
         double maxValue = 15 - (1.0 * dexterityDif) / 2;
         double probability;
-        if (maxValue <= 1) probability = r.nextDouble(1);
-        else probability = r.nextDouble(maxValue - 1) + 1;
+        if (maxValue <= 1) probability = r.nextDouble(0,1);
+        else probability = r.nextDouble(1, maxValue);
         double result = 7.5 + (1.0 * dexterityDif) / 2;
         return (result >= probability);
     }
@@ -88,8 +88,12 @@ public class FightService {
     public static void addExperience(Player player, NPC enemy) {
         player.setExperiencePoints(player.getExperiencePoints()+enemy.getExperiencePoints());
         FightView.fightingMessages("12", enemy, player);
-        if(player.getExperiencePoints()>=player.getMaxExperiencePoints()*player.getLevel()) CharacterService.levelUp(player);
-        FightView.fightingMessages("13", enemy, player); //TODO
+        while(true){
+            if(player.getExperiencePoints()>=player.getMaxExperiencePoints()*player.getLevel()){
+                CharacterService.levelUp(player);
+            }else break;
+        }
+        FightView.fightingMessages("13", enemy, player);
     }
 
 

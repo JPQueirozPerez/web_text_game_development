@@ -13,6 +13,7 @@ public class EquippableItem extends Item{
             defense,
             speed,
             strength;
+    String place;
     Item item;
 
     public EquippableItem(String name, String type, String description, int price, int quantity, int dexterity, int charisma, int defense, int speed, int strength) {

@@ -11,20 +11,20 @@ import static main.com.company.service.InventoryService.searchItemByName;
 
 public class InventoryController {
 
-    public static Inventory addItemToInventory(List<Item> items, Inventory inventory, Item newItem) {
+    public static Inventory addItemToInventory(Inventory inventory, Item newItem) {
         String name = newItem.getName();
         if (inventory.getCapacity() == 0) InventoryView.addItemToInventoryMessage("3", newItem);
         else  {
             if (!compareItems(inventory.getItems(), newItem)) {
-                items.add(newItem);
+                inventory.getItems().add(newItem);
                 newItem.setQuantity(1);
 //                items.replace(newItem, items.get(newItem) + 1);
                 if(inventory.getInitialCapacity() == 10) InventoryView.addItemToInventoryMessage("2", newItem);
             } else {
-                items.stream().filter(z -> z.getName().equals(name)).forEach( x -> x.setQuantity(x.getQuantity()+1));
+                inventory.getItems().stream().filter(z -> z.getName().equals(name)).forEach( x -> x.setQuantity(x.getQuantity()+1));
                 if(inventory.getInitialCapacity() == 10) InventoryView.addItemToInventoryMessage("1", newItem);
             }
-            inventory.setItems(items);
+            inventory.setItems(inventory.getItems());
             inventory.setCapacity(inventory.getCapacity() - 1);
         }
         return inventory;

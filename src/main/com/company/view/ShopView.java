@@ -84,16 +84,17 @@ public class ShopView {
     }
 
     public static void shopping(Player player) {
+        Inventory shopInventory= ShopController.shopping(player);
         while (true) {
             menuShopView();
             String option = ask(reader, "Choose an option");
             switch (option) {
                 case "1": {
-                    ShopController.shopping(player, 1);
+                    ShopView.buyingAndSelling(shopInventory, player, 1);
                     break;
                 }
                 case "2": {
-                    ShopController.shopping(player, 2);
+                    ShopView.buyingAndSelling(shopInventory, player, 2);
                     break;
                 }
                 case "0": {

@@ -20,7 +20,7 @@ public class CharacterService {
 
     // sum characteristics player + items equipments
     public static void setPlayerTotalCharacteristics(Player player) {
-        player.setTotalStrength(player.getEquipment().getTotalStrenght() + player.getStrength());
+        player.setTotalStrength(player.getEquipment().getTotalStrength() + player.getStrength());
         player.setTotalDefense(player.getEquipment().getTotalDefense() + player.getDefense());
         player.setTotalSpeed(player.getEquipment().getTotalSpeed() + player.getSpeed());
     }
@@ -33,11 +33,11 @@ public class CharacterService {
         return player;
     }
 
-    public static void levelUp(Player player){
-        if(player.getExperiencePoints() == player.getMaxExperiencePoints()*player.getLevel()){
+    public static void levelUp(Player player) {
+        if (player.getExperiencePoints() == player.getMaxExperiencePoints() * player.getLevel()) {
             player.setExperiencePoints(0);
-        }else if(player.getExperiencePoints() > player.getMaxExperiencePoints()*player.getLevel()){
-            player.setExperiencePoints(player.getExperiencePoints() - player.getMaxExperiencePoints()*player.getLevel());
+        } else if (player.getExperiencePoints() > player.getMaxExperiencePoints() * player.getLevel()) {
+            player.setExperiencePoints(player.getExperiencePoints() - player.getMaxExperiencePoints() * player.getLevel());
         }
         player.setLevel(player.getLevel() + 1);
         player.setMaxHealthPoints(player.getMaxHealthPoints() + valueGained() * 5);

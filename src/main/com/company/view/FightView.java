@@ -114,4 +114,8 @@ public class FightView {
             }
         }
     }
+
+    public static void enemyLevel(int level) {
+        System.out.println("It is level " + level + "!");
+    }
 }
