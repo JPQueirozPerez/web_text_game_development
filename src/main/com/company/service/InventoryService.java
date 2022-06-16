@@ -1,5 +1,6 @@
 package main.com.company.service;
 
+import main.com.company.controller.EquipmentController;
 import main.com.company.model.EquippableItem;
 import main.com.company.model.Item;
 import main.com.company.model.Player;
@@ -19,37 +20,37 @@ public class InventoryService {
         var reward = new Item();
         switch (value) {
             case 1: {
-                reward = new EquippableItem("Tunic", "cloth", "A simple tunic", 2, 1, 0, 0, 1, 0, 0);
+                reward = new EquippableItem("Tunic", "cloth", "A simple tunic", 2, 1, 0, 0, 1, 0, 0,"body");
                 break;
             }
 
             case 2: {
-                reward = new EquippableItem("Wooden stick", "weapon", "A simple stick made of wood", 1, 1, 0, 0, 0, 0, 1);
+                reward = new EquippableItem("Wooden stick", "weapon", "A simple stick made of wood", 1, 1, 0, 0, 0, 0, 1,"weapon");
                 break;
             }
 
             case 3: {
-                reward = new EquippableItem("Sword", "weapon", "A simple sword", 7, 1, 0, 0, 0, 0, 4);
+                reward = new EquippableItem("Sword", "weapon", "A simple sword", 7, 1, 0, 0, 0, 0, 4,"weapon");
                 break;
             }
 
             case 4: {
-                reward = new EquippableItem("Bow", "weapon", "A simple bow", 4, 1, 0, 0, 0, 0, 2);
+                reward = new EquippableItem("Bow", "weapon", "A simple bow", 4, 1, 0, 0, 0, 0, 2,"weapon");
                 break;
             }
 
             case 5: {
-                reward = new EquippableItem("Great armour", "armour", "A heavy armour with a good defense", 15, 1, 0, 0, 10, -3, 0);
+                reward = new EquippableItem("Great armour", "armour", "A heavy armour with a good defense", 15, 1, 0, 0, 10, -3, 0,"body");
                 break;
             }
 
             case 6: {
-                reward = new EquippableItem("Helmet", "armour", "A basic iron helmet", 5, 1,0, 0, 2, 0, 0);
+                reward = new EquippableItem("Helmet", "armour", "A basic iron helmet", 5, 1,0, 0, 2, 0, 0,"head");
                 break;
             }
 
             case 7: {
-                reward = new EquippableItem("Dagger", "weapon", "A simple dagger", 3, 1, 0, 0, 0, 0, 2);
+                reward = new EquippableItem("Dagger", "weapon", "A simple dagger", 3, 1, 0, 0, 0, 0, 2,"weapon");
                 break;
             }
 
@@ -72,8 +73,8 @@ public class InventoryService {
         if (!((item.getClass() == EquippableItem.class) || (item.getClass() == UsableItem.class))) InventoryView.inventoryMessage(2, item);
         else {
             InventoryView.inventoryMessage(1, item);
-            InventoryController.removeItemFromInventory(player.getInventory(), item, 1);
-            if (item.getClass() == EquippableItem.class) EquipmentService.equippingPlayer(player, item);
+
+            if (item.getClass() == EquippableItem.class) EquipmentController.equippingPlayer(player, item);
             else ItemService.usingItem(player, item);
         }
     }

@@ -84,7 +84,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,3,craftQuantity,ingredientName,"Leather helmet")) {
-                    EquippableItem craftedItem = new EquippableItem("Leather helmet", "armour", "A basic helmet made of leather", 4, craftQuantity,0,0,2,0,0);
+                    EquippableItem craftedItem = new EquippableItem("Leather helmet", "armour", "A basic helmet made of leather", 4, craftQuantity,0,0,2,0,0,"head");
                     CraftService.crafting(player, 3 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -94,7 +94,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,4,craftQuantity,ingredientName,"Leather gloves")) {
-                    EquippableItem craftedItem = new EquippableItem("Leather gloves", "armour", "A basic pair of gloves made of leather", 4, craftQuantity,0,0,2,0,0);
+                    EquippableItem craftedItem = new EquippableItem("Leather gloves", "armour", "A basic pair of gloves made of leather", 4, craftQuantity,0,0,2,0,0,"arms");
                     CraftService.crafting(player, 4 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -104,7 +104,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,4,craftQuantity,ingredientName,"Leather boots")) {
-                    EquippableItem craftedItem = new EquippableItem("Leather boots", "armour", "A basic pair of boots made of leather", 4, craftQuantity,0,0,2,0,0);
+                    EquippableItem craftedItem = new EquippableItem("Leather boots", "armour", "A basic pair of boots made of leather", 4, craftQuantity,0,0,2,0,0,"legs");
                     CraftService.crafting(player, 4 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -114,7 +114,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,7,craftQuantity,ingredientName,"Leather armour")) {
-                    EquippableItem craftedItem = new EquippableItem("Leather armour", "armour", "A basic armour made of leather", 6, craftQuantity,0,0,4,0,0);
+                    EquippableItem craftedItem = new EquippableItem("Leather armour", "armour", "A basic armour made of leather", 6, craftQuantity,0,0,4,0,0,"body");
                     CraftService.crafting(player, 7 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;

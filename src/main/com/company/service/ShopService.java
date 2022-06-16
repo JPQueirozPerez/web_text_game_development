@@ -32,10 +32,10 @@ public class ShopService {
             else {
                 int price = itemPriceCalculation(2, item) * quantity;
                 ShopView.shopMessage(1, item.getName(), price, quantity);
-                for (int i = 0; i < quantity; i++) { //to do
+                InventoryController.removeItemFromInventory(player.getInventory(), item, quantity);
+                for (int i = 0; i < quantity; i++) { //TODO
                     InventoryController.addItemToInventory(shopInventory, item);
                 }
-                InventoryController.removeItemFromInventory(player.getInventory(), item, quantity);
                 player.setMoney(player.getMoney() + price);
                 CharacterView.moneyMessage("2", player, null);
             }
@@ -46,10 +46,11 @@ public class ShopService {
                 ShopView.shopMessage(2, item.getName(), price, quantity);
             else {
                 ShopView.shopMessage(1, item.getName(), price, quantity);
+                InventoryController.removeItemFromInventory(shopInventory, item, quantity);
                 for (int i = 0; i < quantity; i++) { //TODO
                     InventoryController.addItemToInventory(player.getInventory(), item);
                 }
-                InventoryController.removeItemFromInventory(shopInventory, item, quantity);
+                System.out.println(shopInventory.getItems());
                 player.setMoney(player.getMoney() - price);
                 CharacterView.moneyMessage("2", player, null);
             }
