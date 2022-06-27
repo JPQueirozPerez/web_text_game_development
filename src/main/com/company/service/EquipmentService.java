@@ -28,8 +28,8 @@ public class EquipmentService {
         String option = Utilities.ask(reader, "Do you want to change your item?");
         if (option.equalsIgnoreCase("yes")) {
             if (!item.getPlace().equals("weapon")) {
-                EquipmentService.equippingPlayer(player, item);
                 removeEquipment(player, (EquippableItem) equipmentItem);
+                EquipmentService.equippingPlayer(player, item);
             } else {
                 Item weapon2 = searchWeaponByPlace(player.getEquipment().getEquipments(), "weapon");
                 String name = Utilities.ask(reader, "Which weapon do you want to change?" +equipmentItem.getName()+" "+weapon2.getName());
@@ -51,8 +51,12 @@ public class EquipmentService {
         if (player.getInventory().getCapacity() == 0)
             System.out.println("You can't remove this equipment because you don't have capacity in your inventory");
         else {
-            player.getEquipment().getEquipments().remove(item);
-            player.getInventory().getItems().add(item);
+            if (index > 0 && index <= messages.size()) { //TODO https://stackoverflow.com/questions/16746572/linked-list-throws-an-indexoutofboundsexception
+                player.getEquipment().getEquipments().remove(item);
+                player.setInventory(InventoryController.addItemToInventory(player.getInventory(), item));
+            };
+            //player.getInventory().getItems().add(item);//TODO
+            //setEquipmentTotalCharacteristics(player,player.getInventory().getItems().size());//TODO
         }
 
     }

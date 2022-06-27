@@ -5,6 +5,7 @@ import main.com.company.model.*;
 import main.com.company.service.CharacterService;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -17,7 +18,7 @@ CharacterController {
     public static Player createPlayer(String name, String charClass) {
         List<Item> items = new ArrayList<>();
         Inventory playerInventory = new Inventory(10, 10, items);
-        List<EquippableItem> equipments = new ArrayList<>();
+        LinkedList<EquippableItem> equipments = new LinkedList<>();
         Equipment playerEquipment = new Equipment(0, 0, 0, 0, false, false, false, false, false, false, equipments);
         Player newPlayer = new Player();
         switch (charClass) {
@@ -57,7 +58,7 @@ CharacterController {
             }
 
             case "Rogue": {
-                Player player = new Player(name, 1, playerInventory, playerEquipment, 90, 90, 15, 15, 20, 25, "Rogue", 5, 0, 0, 100);
+                Player player = new Player(name, 1, playerInventory, playerEquipment, 90, 90, 15, 15, 20, 25, "Rogue", 500, 0, 0, 100);
                 Item newItem = new EquippableItem("Dagger", "weapon", "A simple dagger", 3, 1, 0, 0, 0, 0, 2,"weapon");
                 newPlayer = CharacterService.createPlayer(items, newItem, player, playerInventory);
                 break;

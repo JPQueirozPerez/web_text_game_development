@@ -19,8 +19,8 @@ public class EquipmentController {
                         EquipmentService.reEquippingPlayer(player, (EquippableItem) item);
                     }
                     else {
-                        player.getEquipment().setHead(true);
                         EquipmentService.equippingPlayer(player,item);
+                        player.getEquipment().setHead(true);
                     }
                     break;
                 }
@@ -29,8 +29,8 @@ public class EquipmentController {
                         EquipmentService.reEquippingPlayer(player, (EquippableItem) item);
                     }
                     else {
-                        player.getEquipment().setBody(true);
                         EquipmentService.equippingPlayer(player,item);
+                        player.getEquipment().setBody(true);
                     }
                     break;
                 }
@@ -39,8 +39,8 @@ public class EquipmentController {
                         EquipmentService.reEquippingPlayer(player, (EquippableItem) item);
                     }
                     else{
-                        player.getEquipment().setArms(true);
                         EquipmentService.equippingPlayer(player,item);
+                        player.getEquipment().setArms(true);
                     }
                     break;
                 }
@@ -49,8 +49,8 @@ public class EquipmentController {
                         EquipmentService.reEquippingPlayer(player, (EquippableItem) item);
                     }
                     else {
-                        player.getEquipment().setLegs(true);
                         EquipmentService.equippingPlayer(player,item);
+                        player.getEquipment().setLegs(true);
                     }
                     break;
                 }
@@ -60,12 +60,12 @@ public class EquipmentController {
                         EquipmentService.reEquippingPlayer(player, (EquippableItem) item);
                     }
                     else if (player.getEquipment().isWeapon1()) {
-                        player.getEquipment().setWeapon2(true);
                         EquipmentService.equippingPlayer(player,item);
+                        player.getEquipment().setWeapon2(true);
                     }
                     else {
-                        player.getEquipment().setWeapon1(true);
                         EquipmentService.equippingPlayer(player,item);
+                        player.getEquipment().setWeapon1(true);
                     }
                     break;
                 }

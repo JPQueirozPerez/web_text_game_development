@@ -3,7 +3,7 @@ package main.com.company.model;
 import jdk.jfr.BooleanFlag;
 import lombok.*;
 
-import java.util.List;
+import java.util.LinkedList;
 
 
 @Getter
@@ -23,7 +23,7 @@ public class Equipment {
             legs,
             weapon1,
             weapon2;
-    private List<EquippableItem> equipments;
+    private LinkedList<EquippableItem> equipments;
 
 
     public boolean isHead(){return this.head;}

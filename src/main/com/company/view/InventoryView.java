@@ -77,6 +77,7 @@ public class InventoryView {
                 else equippingOrUsingObject(player, Integer.parseInt(option));
                 break;
             } catch (Exception e) {
+                System.out.println("exception: "+e);
                 System.out.println("Unknown option. Try again");
             }
         }
