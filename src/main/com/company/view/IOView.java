@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import static main.com.company.frontcontroller.FrontController.gameLoopController;
 import static main.com.company.frontcontroller.FrontController.mainLoopController;
-import static main.com.company.utils.Utilities.ask;
+import static main.com.company.utils.Utilities2.ask;
 //import static com.company.view.Menu.mainMenuView;
 //import static com.company.view.Menu.menuNewGameView;
 

@@ -2,8 +2,9 @@ package main.com.company.view;
 
 import main.com.company.model.NPC;
 import main.com.company.model.Player;
-import main.com.company.utils.Utilities;
+
 import main.com.company.controller.CharacterController;
+import main.com.company.utils.Utilities2;
 
 import java.util.Scanner;
 
@@ -57,7 +58,7 @@ public class CharacterView {
 
     public static void createCharacter() {
         System.out.println("CHARACTER CREATION");
-        String name = Utilities.ask(reader, "What's your name?");
+        String name = Utilities2.ask(reader, "What's your name?");
         charClassElection(name);
     }
 
@@ -65,7 +66,7 @@ public class CharacterView {
         Player player = new Player();
         while (true) {
             showClass();
-            String charClassOption = Utilities.ask(reader, "What's your class?");
+            String charClassOption = Utilities2.ask(reader, "What's your class?");
 
             switch (charClassOption.toLowerCase()) {
                 case "1":

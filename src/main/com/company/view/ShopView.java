@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static main.com.company.service.ShopService.itemPriceCalculation;
-import static main.com.company.utils.Utilities.ask;
+import static main.com.company.utils.Utilities2.ask;
 
 public class ShopView {
     static Scanner reader = new Scanner(System.in);

@@ -4,8 +4,8 @@ import main.com.company.controller.CraftController;
 import main.com.company.model.Player;
 
 import java.util.Scanner;
+import static main.com.company.utils.Utilities2.ask;
 
-import static main.com.company.utils.Utilities.ask;
 
 public class CraftView {
 
