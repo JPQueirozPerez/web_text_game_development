@@ -8,6 +8,8 @@ import main.com.company.controller.InventoryController;
 import main.com.company.view.FightView;
 import main.com.company.view.IOView;
 import java.util.Random;
+
+import static main.com.company.controller.FightController.duringFight;
 import static main.com.company.view.FightView.*;
 
 
@@ -54,22 +56,6 @@ public class FightService {
             FightView.fightingMessages("4", enemy, player);
             fightResult(enemy, player, "enemy");
         }
-    }
-
-    private static void duringFight(Player player, NPC enemy) {
-        showHeathMenu(player,enemy);
-        menuDuringFight();
-        actionOptionDuringFight(player,enemy);
-
-    }
-
-
-    private static void showHeathMenu(Player player, NPC enemy) {
-        System.out.println();
-        System.out.println("************************************************");
-        System.out.println("Health Player "+ player.getHealthPoints() + " points");
-        System.out.println("Health Enemy "+ enemy.getHealthPoints() + " points");
-        System.out.println("************************************************");
     }
 
 

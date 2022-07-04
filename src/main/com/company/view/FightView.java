@@ -11,6 +11,14 @@ import static main.com.company.view.Menu.menuNewGameView;
 
 public class FightView {
 
+    public static void showHeathMenu(Player player, NPC enemy) {
+        System.out.println();
+        System.out.println("************************************************");
+        System.out.println("Health Player "+ player.getHealthPoints() + " points");
+        System.out.println("Health Enemy "+ enemy.getHealthPoints() + " points");
+        System.out.println("************************************************");
+    }
+
     public static void menuDuringFight() {
         System.out.println("");
         System.out.println("1- Attack");
