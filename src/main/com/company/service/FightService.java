@@ -7,13 +7,11 @@ import main.com.company.model.Player;
 import main.com.company.controller.InventoryController;
 import main.com.company.view.FightView;
 import main.com.company.view.IOView;
-
 import java.util.Random;
+import static main.com.company.view.FightView.*;
 
-import static main.com.company.view.FightView.optionsDuringFight;
 
 public class FightService {
-
     public static void initialTurn(NPC enemy, Player player, boolean turn) {
         while (true) {
             if (player.getTotalSpeed() <= enemy.getTotalSpeed()) {
@@ -43,10 +41,10 @@ public class FightService {
     }
 
     public static void playerTurn(NPC enemy, Player player) {
-        // Menu Options Fight
-       // optionsDuringFight(enemy.getHealthPoints(),player.getHealthPoints());
-            showHeathMenu(enemy.getHealthPoints(),player.getHealthPoints());
-            optionsDuringFight();
+
+        // Menu Options during Fight
+        duringFight(player,enemy);
+
         if (!attackSuccess(player, enemy)) {
             FightView.fightingMessages("6", enemy, player);
             fightResult(enemy, player, "enemy");
@@ -58,16 +56,26 @@ public class FightService {
         }
     }
 
-    private static void showHeathMenu(int enemyHealthPoints, int playerHealthPoints) {
+    private static void duringFight(Player player, NPC enemy) {
+        showHeathMenu(player,enemy);
+        menuDuringFight();
+        actionOptionDuringFight(player,enemy);
+
+    }
+
+
+    private static void showHeathMenu(Player player, NPC enemy) {
+        System.out.println();
         System.out.println("************************************************");
-        System.out.println("Health Player "+ playerHealthPoints + " points");
-        System.out.println("Health Enemy "+ enemyHealthPoints + " points");
+        System.out.println("Health Player "+ player.getHealthPoints() + " points");
+        System.out.println("Health Enemy "+ enemy.getHealthPoints() + " points");
         System.out.println("************************************************");
     }
 
 
     public static void fightResult(NPC enemy, Player player, String nextTurn) {
-        if (player.getHealthPoints() <= 0) IOView.mainLoopView();
+        if(nextTurn.equals("exit")) IOView.gameLoopView(player);
+        if (player.getHealthPoints() <= 0 ) IOView.mainLoopView();
         else if (enemy.getHealthPoints() <= 0) {
             levelUp(player);
             FightView.fightingMessages("9", enemy, player);

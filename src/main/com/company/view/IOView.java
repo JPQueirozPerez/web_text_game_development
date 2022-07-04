@@ -81,6 +81,13 @@ public class IOView {
         return option = ask(reader, "Choose an option");
     }
 
+  /*  public static String menuOptionDuringFight() {
+        Scanner reader = new Scanner(System.in);
+        String option;
+        return option = ask(reader, "Choose an option");
+
+    }*/
+
     public static void finishGameView() {
         //Exit program
         System.out.println("We hope to see you soon, adventurer!");
