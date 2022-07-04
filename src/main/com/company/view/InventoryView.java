@@ -11,13 +11,6 @@ import static main.com.company.service.InventoryService.equippingOrUsingObject;
 
 public class InventoryView {
 
-
-
-
-
-
-
-
     public static void showInventory(Player player) {
         System.out.println("INVENTORY");
         showInventoryLoop(player);
