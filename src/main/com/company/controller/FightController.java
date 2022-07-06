@@ -5,6 +5,7 @@ import main.com.company.model.Player;
 import main.com.company.view.FightView;
 
 import static main.com.company.service.FightService.initialTurn;
+import static main.com.company.view.FightView.*;
 
 public class FightController {
 
@@ -15,6 +16,15 @@ public class FightController {
         initialTurn(enemy, player, true);
         return player;
     }
+
+    public static void duringFight(Player player, NPC enemy) {
+        showHeathMenu(player,enemy);
+        menuDuringFight();
+        actionOptionDuringFight(player,enemy);
+
+    }
+
+
 }
 
 

@@ -10,6 +10,8 @@ import main.com.company.view.IOView;
 
 import java.util.Random;
 
+import static main.com.company.controller.FightController.duringFight;
+
 public class FightService {
 
     public static void initialTurn(NPC enemy, Player player, boolean turn) {
@@ -41,6 +43,11 @@ public class FightService {
     }
 
     public static void playerTurn(NPC enemy, Player player) {
+
+
+        // Menu Options during Fight
+        duringFight(player,enemy);
+
         if (!attackSuccess(player, enemy)) {
             FightView.fightingMessages("6", enemy, player);
             fightResult(enemy, player, "enemy");
@@ -53,6 +60,7 @@ public class FightService {
     }
 
     public static void fightResult(NPC enemy, Player player, String nextTurn) {
+        if(nextTurn.equals("exit")) IOView.gameLoopView(player);
         if (player.getHealthPoints() <= 0) IOView.mainLoopView();
         else if (enemy.getHealthPoints() <= 0) {
             levelUp(player);

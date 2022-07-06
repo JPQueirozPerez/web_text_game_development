@@ -4,8 +4,63 @@ import main.com.company.model.NPC;
 import main.com.company.model.Player;
 import main.com.company.service.FightService;
 
+import static main.com.company.service.FightService.fightResult;
+import static main.com.company.view.IOView.menuOption;
+import static main.com.company.view.InventoryView.inventoryUseItem;
+import static main.com.company.view.Menu.menuNewGameView;
+
 
 public class FightView {
+
+
+    public static void showHeathMenu(Player player, NPC enemy) {
+        System.out.println();
+        System.out.println("************************************************");
+        System.out.println("Health Player "+ player.getHealthPoints() + " points");
+        System.out.println("Health Enemy "+ enemy.getHealthPoints() + " points");
+        System.out.println("************************************************");
+    }
+
+    public static void menuDuringFight() {
+        System.out.println("");
+        System.out.println("1- Attack");
+        System.out.println("2- Inventory - Use item");
+        System.out.println("");
+        System.out.println("0- Leave");
+        System.out.println("");
+    }
+
+    public static void actionOptionDuringFight(Player player, NPC enemy) {
+        boolean exitMenu = false;
+        while (!exitMenu) {
+            String value =  menuOption();
+            switch (value) {
+                case "1": {
+                    exitMenu=true;
+                    break;
+                }
+                case "2": {
+                    inventoryUseItem(player);
+                    exitMenu=true;
+                    break;
+                }
+                case "0": {
+                    exitDuringFight(player,enemy);
+                    break;
+                }
+                default:
+                    System.out.println("Unknown option. Try again");
+            }
+        }
+    }
+
+    private static void exitDuringFight(Player player,NPC enemy) {
+        System.out.println();
+        System.out.println("We've run from the fight");
+        fightResult(enemy, player, "exit");
+        menuNewGameView();
+    }
+
 
     public static void fightingMessages(String value, NPC enemy, Player player) {
         switch (value) {
