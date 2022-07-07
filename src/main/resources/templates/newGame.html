@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/img/favicon.png" />
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <title>New game</title>
+</head>
+<body>
+    <header>
+        <div class="header-img"><img src="../static/img/logo.jpg"></div>      
+        <ul class="header-nav">
+            <li><a href="./underConstructionPage.html">OPTIONS</a></li>
+            <li><a href="./index.html">BACK TO MAIN</a></li>
+            <li><a href="./underConstructionPage.html">EN/ES</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="form-container">
+            <form action="" class="newGame-form">
+                
+                <label for="name">ENTER YOUR NAME</label>
+                <input type="text" name="name" id="name">
+
+                <label for="class">CHOOSE CLASS</label>
+                <select id="class" name="class">
+                    <option value="">--Please choose class--</option>
+                    <option value="mage">MAGE</option>
+                    <option value="cleric">CLERIC</option>
+                    <option value="rogue">ROGUE</option>
+                    <option value="warrior">WARRIOR</option>
+                </select>
+                <button class="button" type="button" onclick="location.href='./game.html';" >START GAME</button>
+               
+            </form>
+        </div>
+    </main>
+    <footer>
+        <a href="./underConstructionPage.html">ABOUT US</a>
+    </footer>
+</body>
+</html>
+
