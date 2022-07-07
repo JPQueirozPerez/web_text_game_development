@@ -1,11 +1,9 @@
 package main.com.company.servicejpa;
 
-import main.com.company.model.Exceptions;
-import main.com.company.model.Item;
-import main.com.company.model.NPC;
-import main.com.company.model.Player;
+import main.com.company.model.*;
 import main.com.company.repository.RepositoryChar;
-import main.com.company.repository.RepositoryItem;
+import main.com.company.repository.RepositoryEquipment;
+import main.com.company.repository.RepositoryInventory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,6 +15,14 @@ public class ServiceCharacterJPA {
 
     @Autowired
     private RepositoryChar repoChar;
+
+    @Autowired
+    private RepositoryInventory repoI;
+
+    @Autowired
+    private RepositoryEquipment repoE;
+
+
 
     private  static RepositoryChar repoC;
 
@@ -66,18 +72,24 @@ public class ServiceCharacterJPA {
     }
 
     public void deleteBycharClass(String charClass){
+        Inventory i = new Inventory();
+        Equipment e = new Equipment();
         Optional<Player> player = repoChar.findBycharClass(charClass);
         if (player.get()==null) {
             throw new Exceptions("player not found", HttpStatus.NOT_FOUND);
         }
-        repoChar.deleteBycharClass(charClass);
+        repoI.delete(player.get().getInventory());
+        repoE.delete(player.get().getEquipment());
+        player.get().setEquipment(e);
+        player.get().setInventory(i);
+        repoChar.delete(player.get());
     }
     public void deleteByname(String name){
         Optional<NPC> npc = repoChar.findByName(name);
         if (npc.get()==null) {
             throw new Exceptions("npc not found", HttpStatus.NOT_FOUND);
         }
-        repoChar.deleteByname(name);
+        repoChar.delete(npc.get());
     }
 
 

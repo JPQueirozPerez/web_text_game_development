@@ -25,14 +25,14 @@ public interface RepositoryChar extends JpaRepository<Character,Integer> {
     @Query("select c from Character c where c.name = ?1")
     public Optional<NPC> findByName(String name);
 
-    @Transactional
-    @Modifying
-    @Query("delete from Player p where p.charClass = ?1")
-    public Optional<Player>  deleteBycharClass(String charClass);
-
-    @Transactional
-    @Modifying
-    @Query("delete from Character c where c.name = ?1")
-    public int deleteByname(String name);
+//    @Transactional
+//    @Modifying
+//    @Query("delete from Player p where p.charClass = ?1")
+//    public Optional<Player>  deleteBycharClass(String charClass);
+//
+//    @Transactional
+//    @Modifying
+//    @Query("delete from Character c where c.name = ?1")
+//    public int deleteByname(String name);
 
 }

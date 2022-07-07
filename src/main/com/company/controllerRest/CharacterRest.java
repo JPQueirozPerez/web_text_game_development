@@ -41,7 +41,7 @@ public class CharacterRest {
         return serviceChar.update(charClass,player);
     }
 
-    @DeleteMapping("/player/delete/{name}")
+    @DeleteMapping("/player/delete/{charClass}")
     public ResponseEntity<Void> deleteP(@PathVariable("charClass") String charClass) {
         serviceChar.deleteBycharClass(charClass);
         return ResponseEntity.noContent().build();

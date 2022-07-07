@@ -18,6 +18,8 @@ public class ServiceItemJPA {
     @Autowired
     private RepositoryItem repoeitem;
 
+
+
     private static RepositoryItem repoei;
 
     @PostConstruct
@@ -43,7 +45,8 @@ public class ServiceItemJPA {
         if (item.get()==null) {
             throw new Exceptions("Item not found", HttpStatus.NOT_FOUND);
         }
-        repoeitem.deleteByName(name);
+
+        repoeitem.delete(item.get());
     }
 
     public Item update(String name,Item item){

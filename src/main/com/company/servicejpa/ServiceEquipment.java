@@ -3,16 +3,17 @@ package main.com.company.servicejpa;
 
 import main.com.company.model.Equipment;
 
-import main.com.company.repository.Repositoryequipment;
+import main.com.company.repository.RepositoryEquipment;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceEquipment {
 
-   private final  Repositoryequipment repoequipment;
+   private final RepositoryEquipment repoequipment;
 
 
-    public ServiceEquipment(Repositoryequipment repoequipment) {
+    public ServiceEquipment(RepositoryEquipment repoequipment) {
         this.repoequipment = repoequipment;
 
     }
