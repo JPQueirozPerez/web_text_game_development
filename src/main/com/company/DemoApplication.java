@@ -95,17 +95,17 @@ public class DemoApplication {
 			Item fur = new Item("Fur", "material", "The fur of an wild animal", 1, 1);
 			Item clay = new Item("Clay", "material", "A handful of clay", 1, 1);
 
-			NPC enemy1 = new NPC("Goblin", 5, createItem(), 20, 20, 20, 5, 25, 25, "enemy", 5, 5, 0,1);
-			NPC enemy2 = new NPC("Wolf", 5, fur, 10, 10, 10, 15, 35, 5, "beast", 0, 5, 0,2);
-			NPC enemy3 = new NPC("Burglar", 5, createItem(), 25, 25, 15, 15, 15, 15, "enemy", 20, 5, 0,3);
-			NPC enemy4 = new NPC("Witch", 5, createItem(), 20, 20, 10, 15, 25, 15, "enemy", 5, 5, 0,4);
-			NPC enemy5 = new NPC("Ratman", 5, fur, 25, 25, 20, 10, 20, 10, "beast", 0, 5, 0,5);
-			NPC enemy6 = new NPC("Wild boar", 5, fur, 10, 10, 10, 10, 25, 10, "beast", 0, 5, 0,6);
-			NPC enemy7 = new NPC("Vampire", 5, createItem(), 40, 40, 20, 10, 15, 15, "enemy", 10, 5, 0,7);
-			NPC enemy8 = new NPC("Wendigo", 5, fur, 25, 25, 25, 5, 25, 5, "beast", 0, 5, 0,8);
-			NPC enemy9 = new NPC("Golem", 5, clay, 45, 45, 35, 25, 10, 10, "golem", 0, 5, 0,9);
-			NPC enemy10 = new NPC("Cave lion", 5, fur, 15, 15, 15, 15, 25, 5, "beast", 0, 5, 0,10);
-			NPC enemy11 = new NPC("Soldier", 5, createItem(), 50, 50, 25, 15, 5, 20, "enemy", 15, 5, 0,11);
+			NPC enemy1 = new NPC("Goblin", 5, createItem(), 20, 20, 20, 5, 25, 25, "enemy", 5, 5, 0,1,true);
+			NPC enemy2 = new NPC("Wolf", 5, fur, 10, 10, 10, 15, 35, 5, "beast", 0, 5, 0,2,true);
+			NPC enemy3 = new NPC("Burglar", 5, createItem(), 25, 25, 15, 15, 15, 15, "enemy", 20, 5, 0,3,true);
+			NPC enemy4 = new NPC("Witch", 5, createItem(), 20, 20, 10, 15, 25, 15, "enemy", 5, 5, 0,4,true);
+			NPC enemy5 = new NPC("Ratman", 5, fur, 25, 25, 20, 10, 20, 10, "beast", 0, 5, 0,5,true);
+			NPC enemy6 = new NPC("Wild boar", 5, fur, 10, 10, 10, 10, 25, 10, "beast", 0, 5, 0,6,true);
+			NPC enemy7 = new NPC("Vampire", 5, createItem(), 40, 40, 20, 10, 15, 15, "enemy", 10, 5, 0,7,true);
+			NPC enemy8 = new NPC("Wendigo", 5, fur, 25, 25, 25, 5, 25, 5, "beast", 0, 5, 0,8,true);
+			NPC enemy9 = new NPC("Golem", 5, clay, 45, 45, 35, 25, 10, 10, "golem", 0, 5, 0,9,true);
+			NPC enemy10 = new NPC("Cave lion", 5, fur, 15, 15, 15, 15, 25, 5, "beast", 0, 5, 0,10,true);
+			NPC enemy11 = new NPC("Soldier", 5, createItem(), 50, 50, 25, 15, 5, 20, "enemy", 15, 5, 0,11,true);
 			repoc.save(enemy1);
 			repoc.save(enemy2);
 			repoc.save(enemy3);
