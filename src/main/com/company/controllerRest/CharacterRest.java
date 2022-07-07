@@ -1,6 +1,7 @@
 package main.com.company.controllerRest;
 
 import main.com.company.model.*;
+import main.com.company.model.Character;
 import main.com.company.repository.RepositoryChar;
 import main.com.company.servicejpa.ServiceCharacterJPA;
 import main.com.company.servicejpa.ServiceEquipment;
@@ -29,6 +30,20 @@ public class CharacterRest {
     public Player getByNameP(@PathVariable String charClass){
         Optional<Player> player = repositoryChar.findBycharClass(charClass);
         return player.get();
+    }
+
+    @GetMapping("/listChar")
+    public Iterable<Character> listarChar(){
+        return  repositoryChar.findAllChar();
+    }
+    @GetMapping("/listPlayer")
+    public Iterable<Player> listarPlayer(){
+        return  repositoryChar.findAllPlayer();
+    }
+
+    @GetMapping("/listNPC")
+    public Iterable<NPC> listarNPC(){
+        return  repositoryChar.findAllNPC();
     }
 
     @PostMapping("/player/add")
