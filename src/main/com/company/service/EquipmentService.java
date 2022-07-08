@@ -3,8 +3,9 @@ package main.com.company.service;
 import main.com.company.model.EquippableItem;
 import main.com.company.model.Item;
 import main.com.company.model.Player;
+import org.springframework.stereotype.Service;
 
-// Check numbers items Equipment and add items Equipment <= 10
+@Service
 public class EquipmentService {
     public static void equippingPlayer(Player player, Item item) {
         player.getEquipment().setQuantityEquippedItems(player.getEquipment().getQuantityEquippedItems() + 1);

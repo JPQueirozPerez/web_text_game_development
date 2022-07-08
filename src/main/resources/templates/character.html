@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <html xmlns:th="http://www.thymeleaf.org"></html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}" />
+    <title>Character</title>
+</head>
+<body>
+<header>
+    <div class="header-img"><img src="/img/logo.jpg"></div>
+    <ul class="header-nav">
+        <li><a th:href="@{/game/underConstruction}">OPTIONS</a></li>
+        <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
+    </ul>
+</header>
+<main th:object="${player}">
+    <h2><span th:text="*{name}"></span>'s Characteristic</h2>
+    <table>
+        <tr><th><strong>Class</strong></th><td th:text="*{charClass}"></td></tr>
+        <tr><th><strong>Level</strong></th><td th:text="*{level}"></td></tr>
+        <tr><th><strong>Experience Points</strong></th>  <td th:text="*{experiencePoints}"></td></tr>
+        <tr><th><strong>Health Points</strong></th><td><span th:text="*{healthPoints}"></span> / <span th:text="*{maxHealthPoints}"></span></td></tr>
+        <tr><th><strong>Charisma</strong></th>  <td th:text="*{charisma}"></td></tr>
+        <tr><th><strong>Defense</strong></th>  <td th:text="*{defense}"></td></tr>
+        <tr><th><strong>Dexterity</strong></th>  <td th:text="*{dexterity}"></td></tr>
+        <tr><th><strong>Speed</strong></th>  <td th:text="*{speed}"></td></tr>
+        <tr><th><strong>Strength</strong></th><td th:text="*{strength}"></td></tr>
+    </table>
+
+    <h2><span th:text="${player.name}"></span>'s Equipment</h2>
+    <table>
+        <tr class="inventoryHead">
+            <th>Item</th>
+            <th>Description</th>
+            <th>Defense</th>
+            <th>Speed</th>
+            <th>Strength</th>
+        </tr>
+        <tr th:each="item:${player.inventory.items}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.description}"></td>
+            <td th:text="${item.defense}"><span th:if="${item.defense < 0}">+</span><span th:text="${item.defense}"></span></td>
+            <td th:text="${item.speed}"><span th:if="${item.speed == 0}">+</span><span th:text="${item.speed}"></span></td>
+            <td th:text="${item.strength}"><span th:if="${item.strength > 0}">+</span><span th:text="${item.strength}"></span></td>
+        </tr>
+    </table>
+    <a th:href="@{/game/mainGame}">BACK TO GAME</a>
+</main>
+<footer>
+    <a th:href="@{/game/underConstruction}">ABOUT US</a>
+</footer>
+</body>
+</html>

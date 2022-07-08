@@ -3,7 +3,9 @@ package main.com.company.service;
 import main.com.company.model.Item;
 import main.com.company.model.Player;
 import main.com.company.model.UsableItem;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ItemService {
 
     static void usingItem(Player player, Item item) {

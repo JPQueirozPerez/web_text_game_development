@@ -4,11 +4,13 @@ import main.com.company.model.Inventory;
 import main.com.company.model.Item;
 import main.com.company.model.NPC;
 import main.com.company.model.Player;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static main.com.company.view.CharacterView.moneyMessage;
 
+@Service
 public class CharacterService {
 
     public static void addingMoney(Player player, NPC enemy) {
