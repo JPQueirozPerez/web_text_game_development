@@ -7,11 +7,13 @@ import main.com.company.model.Player;
 import main.com.company.controller.InventoryController;
 import main.com.company.view.FightView;
 import main.com.company.view.IOView;
+import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
 import static main.com.company.controller.FightController.duringFight;
 
+@Service
 public class FightService {
 
     public static void initialTurn(NPC enemy, Player player, boolean turn) {

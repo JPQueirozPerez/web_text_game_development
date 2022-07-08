@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <html xmlns:th="http://www.thymeleaf.org"></html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}" />
+    <title>Fight</title>
+</head>
+<body>
+<header>
+    <div class="header-img"><img src="/img/logo.jpg"></div>
+    <ul class="header-nav">
+        <li><a th:href="@{/game/underConstruction}">OPTIONS</a></li>
+        <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
+    </ul>
+</header>
+<main th:object="${player}">
+    <span th:object="${enemy}">
+    <h1>Fighting</h1>
+    <h2 th:text="${player.name + ' level: ' + player.level}"></h2>
+    <h2 th:text="${enemy.name + ' level: ' + enemy.level}"></h2>
+
+    <ul class="main-menu">
+        <!--            <li><a th:href="@{/game/underConstruction}">NORTH</a></li>-->
+        <!--            <li><a th:href="@{/game/underConstruction}">EAST</a></li>-->
+        <!--            <li><a th:href="@{/game/underConstruction}">SOUTH</a></li>-->
+        <!--            <li><a th:href="@{/game/underConstruction}">WEST</a></li>-->
+        <li><a th:href="@{fight}">ATTACK</a></li>
+        <li><a th:href="@{inventory}">INVENTORY</a></li>
+        <li><a th:href="@{character}">CHARACTER</a></li>
+        <li><a th:href="@{/game/mainGame}">ESCAPE</a></li>
+
+        </span>
+</main>
+<footer>
+    <a th:href="@{/game/underConstruction}">ABOUT US</a>
+</footer>
+</body>
+</html>

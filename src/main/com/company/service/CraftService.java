@@ -4,7 +4,9 @@ import main.com.company.model.Item;
 import main.com.company.model.Player;
 import main.com.company.controller.InventoryController;
 import main.com.company.view.CraftView;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CraftService {
 
     public static void crafting(Player player, int necessaryQuantity, Item craftedItem, Item ingredientItem, int craftQuantity) {

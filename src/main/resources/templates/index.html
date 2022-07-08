@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <html xmlns:th="http://www.thymeleaf.org"></html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../static/img/favicon.png" />
-    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}" />
     <title>Game</title>
 </head>
 <body>
     <header>
-        <div class="header-img"><img src="../static/img/logo.jpg"></div>      
+        <div class="header-img"><img src="/img/logo.jpg"></div>
         <ul class="header-nav">
-            <li><a href="./underConstructionPage.html">OPTIONS</a></li>
-            <li><a href="./underConstructionPage.html">EN/ES</a></li>
+            <li><a th:href="@{/game/underConstruction}">OPTIONS</a></li>
+            <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
         </ul>
     </header>
     <main>
         <ul class="main-menu">
-            <li><a href="./newGame.html">NEW GAME</a></li>
-            <li><a href="./underConstructionPage.html">CONTINUE</a></li>
-            <li><a href="./underConstructionPage.html">USER MANUAL</a></li>
+            <li><a th:href="@{/game/newGame}">NEW GAME</a></li>
+            <li><a th:href="@{/game/underConstruction}">CONTINUE</a></li>
+            <li><a th:href="@{/game/underConstruction}">USER MANUAL</a></li>
         </ul>
     </main>
     <footer>
-        <a href="./underConstructionPage.html">ABOUT US</a>
+        <a th:href="@{/game/underConstruction}">ABOUT US</a>
     </footer>
 </body>
 </html>

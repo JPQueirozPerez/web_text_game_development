@@ -16,7 +16,7 @@ public class CharacterView {
         System.out.println(" Name: " + player.getName() +  " | Money: "  + player.getMoney());
         System.out.println(" Level: " + player.getLevel()  + " | Class: "  + player.getCharClass());
         System.out.println(" Health Points: "  + player.getHealthPoints()  + "/"  + player.getMaxHealthPoints());
-        System.out.println(" Strength: "  + player.getStrength() + ((player.getEquipment().getTotalStrenght() != 0) ? " (" + ((player.getEquipment().getTotalStrenght() > 0) ? "+" : "") + player.getEquipment().getTotalStrenght() + ")" : ""));
+        System.out.println(" Strength: "  + player.getStrength() + ((player.getEquipment().getTotalStrength() != 0) ? " (" + ((player.getEquipment().getTotalStrength() > 0) ? "+" : "") + player.getEquipment().getTotalStrength() + ")" : ""));
         System.out.println(" Defense: "  + player.getDefense() + ((player.getEquipment().getTotalDefense() != 0) ? " (" + ((player.getEquipment().getTotalDefense() > 0) ? "+" : "") + player.getEquipment().getTotalDefense() + ")" : ""));
         System.out.println(" Speed: "  + player.getSpeed() + ((player.getEquipment().getTotalSpeed() != 0) ? " (" + ((player.getEquipment().getTotalSpeed() > 0) ? "+" : "") + player.getEquipment().getTotalSpeed() + ")" : ""));
         System.out.println(" Dexterity: " +  player.getDexterity());

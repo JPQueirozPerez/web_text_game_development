@@ -34,11 +34,39 @@ public class ServiceCharacterJPA {
         return k;
     }
 
-    public NPC findbyChoise(int choise){
-        Optional<NPC> o = repoC.findByChoise(choise);
+    public NPC findbyChoise(int choice){
+        Optional<NPC> o = repoC.findByChoise(choice);
         NPC n = o.get();
         return n;
     }
+
+    public Iterable<Player> findAllClasses(){
+        Iterable<Player> charClasses = repoC.findAllPlayer();
+        return charClasses;
+    }
+
+    public Player update(String charClass, Player player){
+        Optional<Player> player2 = repoChar.findBycharClass(charClass);
+        Player player3 = player2.get();
+        if(player3!=null){
+//            the wishes of the front-end
+            return repoChar.save(player3);
+        }
+        return null;
+
+    }
+
+    public NPC update(String name, NPC npc){
+        Optional<NPC> npc2 = repoChar.findByName(name);
+        NPC npc3 = npc2.get();
+        if(npc3!=null){
+//            the wishes of the front-end
+            return repoChar.save(npc3);
+        }
+        return null;
+
+    }
+
 
 
 
