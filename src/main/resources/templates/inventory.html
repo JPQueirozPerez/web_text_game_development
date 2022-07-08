@@ -26,7 +26,7 @@
             <th>Quantity</th>
         </tr>
         <tr th:each="item: *{inventory.items}">
-            <td th:text="${item.name}"></td>
+            <td><a th:href="@{/game/item}" th:text="${item.name}"></a></td>
             <td th:text="${item.description}"></td>
             <td>x<span th:text="${item.quantity}"></span></td>
         </tr>

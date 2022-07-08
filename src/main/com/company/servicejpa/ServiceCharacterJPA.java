@@ -34,8 +34,8 @@ public class ServiceCharacterJPA {
         return k;
     }
 
-    public NPC findbyChoise(int choise){
-        Optional<NPC> o = repoC.findByChoise(choise);
+    public NPC findbyChoise(int choice){
+        Optional<NPC> o = repoC.findByChoise(choice);
         NPC n = o.get();
         return n;
     }

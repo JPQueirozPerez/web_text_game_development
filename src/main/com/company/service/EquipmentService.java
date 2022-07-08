@@ -14,7 +14,7 @@ public class EquipmentService {
     }
 
     public static void setEquipmentTotalCharacteristics(Player player, int indexItemEquipment) {
-        player.getEquipment().setTotalStrenght(((EquippableItem) player.getEquipment().getEquipments().get(indexItemEquipment-1)).getStrength() + player.getEquipment().getTotalStrenght());
+        player.getEquipment().setTotalStrength(((EquippableItem) player.getEquipment().getEquipments().get(indexItemEquipment-1)).getStrength() + player.getEquipment().getTotalStrength());
         player.getEquipment().setTotalDefense(((EquippableItem) player.getEquipment().getEquipments().get(indexItemEquipment-1)).getDefense() + player.getEquipment().getTotalDefense());
         player.getEquipment().setTotalSpeed(((EquippableItem) player.getEquipment().getEquipments().get(indexItemEquipment-1)).getSpeed() + player.getEquipment().getTotalSpeed());
         CharacterService.setPlayerTotalCharacteristics(player);
