@@ -107,4 +107,12 @@ public class GameWebController {
     public String underConstruction() {
         return "underConstructionPage";
     }
+
+
+    @RequestMapping("/shop")
+    public String shop(Model playerFromController){
+        Player player = (Player) playerFromController.getAttribute("player");
+        return "shop";
+    }
+
 }

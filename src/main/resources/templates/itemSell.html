@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}" />
+    <title>Game</title>
+</head>
+<body>
+<header>
+    <div class="header-img"><img src="/img/logo.jpg"></div>
+    <ul class="header-nav">
+        <li><a th:href="@{/game/underConstruction}">OPTIONS</a></li>
+        <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
+    </ul>
+</header>
+<main th:object="${player}">
+    <h1><span th:text="*{name}"></span>'s Item to Sell </h1>
+    <table>
+        <tr class="inventoryHead">
+            <th>Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Defense</th>
+            <th>Speed</th>
+            <th>Attack</th>
+        </tr>
+        <tr th:each="item: *{inventory.items}">
+            <td><a th:href="@{/game/item}" th:text="${item.name}"></a></td>
+            <td th:text="${item.description}"></td>
+            <td>x<span th:text="${item.quantity}"></span></td>
+            <td>x<span th:text="${item.price}"></span></td>
+            <td>x<span th:text="${item.defense}"></span></td>
+            <td>x<span th:text="${item.speed}"></span></td>
+            <td>x<span th:text="${item.attack}"></span></td>
+        </tr>
+    </table>
+    <a th:href="@{/game/mainGame}">BACK TO GAME</a>
+</main>
+
+<footer>
+    <a th:href="@{/game/underConstruction}">ABOUT US</a>
+</footer>
+</body>
+</html>
