@@ -16,12 +16,51 @@
         <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
     </ul>
 </header>
-<main>
-    <ul class="main-menu">
-        <li><a th:href="@{/game/itemBuy}">BUY</a></li>
-        <li><a th:href="@{/game/itemSell}">SELL</a></li>
-        <li><a th:href="@{/game/index}">RETURN TO MENU</a></li>
-    </ul>
+<main  th:object="${player}">
+    <h1><span th:text="*{name}"></span>'s Item to Sell</h1>
+    <table>
+        <tr class="inventoryHead">
+            <th>Item</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+<!--            <th>Defense</th>-->
+<!--            <th>Speed</th>-->
+<!--            <th>Attack</th>-->
+        </tr>
+        <tr th:each="item: *{inventory.items}">
+            <td><a th:href="@{/game/item}" th:text="${item.name}"></a></td>
+            <td th:text="${item.description}"></td>
+            <td>x<span th:text="${item.quantity}"></span></td>
+            <td>x<span th:text="${item.price}"></span></td>
+<!--            <td>x<span th:text="${item.defense}"></span></td>-->
+<!--            <td>x<span th:text="${item.speed}"></span></td>-->
+<!--            <td>x<span th:text="${item.attack}"></span></td>-->
+        </tr>
+    </table>
+    <a th:href="@{/game/mainGame}">BACK TO GAME</a>
+<!--    <h2><span th:text="*{name}"></span>'s Item to Buy </h2>-->
+<!--    <table>-->
+<!--        <tr class="inventoryHead">-->
+<!--            <th>Name</th>-->
+<!--            <th>Description</th>-->
+<!--            <th>Quantity</th>-->
+<!--            <th>Price</th>-->
+<!--            <th>Defense</th>-->
+<!--            <th>Speed</th>-->
+<!--            <th>Attack</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="item: *{inventory.items}">-->
+<!--            <td><a th:href="@{/game/item}" th:text="${item.name}"></a></td>-->
+<!--            <td th:text="${item.description}"></td>-->
+<!--            <td>x<span th:text="${item.quantity}"></span></td>-->
+<!--            <td>x<span th:text="${item.price}"></span></td>-->
+<!--            <td>x<span th:text="${item.defense}"></span></td>-->
+<!--            <td>x<span th:text="${item.speed}"></span></td>-->
+<!--            <td>x<span th:text="${item.attack}"></span></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
 </main>
 <footer>
     <a th:href="@{/game/underConstruction}">ABOUT US</a>
