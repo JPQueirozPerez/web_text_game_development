@@ -19,7 +19,7 @@
 </header>
 <main th:object="${player}">
     <h2><span th:text="*{name}"></span>'s Characteristic</h2>
-    <table>
+    <table class="characterTable">
         <tr><th><strong>Class</strong></th><td th:text="*{charClass}"></td></tr>
         <tr><th><strong>Level</strong></th><td th:text="*{level}"></td></tr>
         <tr><th><strong>Experience Points</strong></th>  <td th:text="*{experiencePoints}"></td></tr>
@@ -61,7 +61,7 @@
             <td><span th:if="${item.strength > 0}">+</span><span th:text="${item.strength}"></span></td>
         </tr>
     </table>
-    <a th:href="@{/game/mainGame}">BACK TO GAME</a>
+    <a href="" onclick="history.back();">BACK</a>
 </main>
 <footer>
     <a th:href="@{/game/underConstruction}">ABOUT US</a>

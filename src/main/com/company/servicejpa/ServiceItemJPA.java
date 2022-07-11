@@ -26,8 +26,8 @@ public class ServiceItemJPA {
 
 
 
-    public EquippableItem findbyChoise(int choise){
-        Optional<EquippableItem> o = repoei.findByChoise(choise);
+    public EquippableItem findbyChoice(int choice){
+        Optional<EquippableItem> o = repoei.findByChoice(choice);
         EquippableItem n = o.get();
         return n;
     }

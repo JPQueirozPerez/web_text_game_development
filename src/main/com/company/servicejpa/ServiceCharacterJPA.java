@@ -3,7 +3,6 @@ package main.com.company.servicejpa;
 import main.com.company.model.NPC;
 import main.com.company.model.Player;
 import main.com.company.repository.RepositoryChar;
-import main.com.company.repository.RepositoryItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +33,8 @@ public class ServiceCharacterJPA {
         return k;
     }
 
-    public NPC findbyChoise(int choice){
-        Optional<NPC> o = repoC.findByChoise(choice);
+    public NPC findbyChoice(int choice){
+        Optional<NPC> o = repoC.findByChoice(choice);
         NPC n = o.get();
         return n;
     }

@@ -48,7 +48,7 @@ public class FightService {
 
 
         // Menu Options during Fight
-        duringFight(player,enemy);
+//        duringFight(player,enemy);
 
         if (!attackSuccess(player, enemy)) {
             FightView.fightingMessages("6", enemy, player);

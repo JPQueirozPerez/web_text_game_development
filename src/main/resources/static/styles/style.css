@@ -46,6 +46,14 @@
     height: 30px;
 }
 
+.characterTable th{
+    text-align: left;
+}
+
+.characterTable strong{
+    margin-left: 15px;
+}
+
 .header-nav {
     justify-content: space-between;
     margin: 0;

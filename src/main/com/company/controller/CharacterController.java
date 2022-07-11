@@ -46,8 +46,8 @@ public class CharacterController {
 
     public static NPC createEnemyPlaceholder(int playerLevel) {
 
-        int value = new Random().nextInt(1, 11);
-        NPC npc =  sc.findbyChoise(value);
+        int value = new Random().nextInt(1, 12);
+        NPC npc =  sc.findbyChoice(value);
 
         if(npc.getCharClass().equals("beast")){
             Item fur = new Item("Fur", "material", "The fur of an wild animal", 1, 1);

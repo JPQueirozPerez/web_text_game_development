@@ -5,6 +5,7 @@ import main.com.company.model.Item;
 import main.com.company.view.InventoryView;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static main.com.company.service.InventoryService.compareItems;
 import static main.com.company.service.InventoryService.searchItemByName;
@@ -18,6 +19,7 @@ public class InventoryController {
             if (!compareItems(inventory.getItems(), newItem)) {
                 items.add(newItem);
                 newItem.setQuantity(1);
+                newItem.setIndex(inventory.getItems().indexOf(newItem));
 //                items.replace(newItem, items.get(newItem) + 1);
                 if(inventory.getCapacity() == 10) InventoryView.addItemToInventoryMessage("1", newItem);
             } else {
@@ -35,6 +37,10 @@ public class InventoryController {
         inventory.getItems().stream().filter(z -> z.getName().equals(name)).forEach( x -> x.setQuantity(x.getQuantity()-repetition));
         inventory.setCapacity(inventory.getCapacity() + repetition);
         if (searchItemByName(inventory.getItems(),name).getQuantity() < 1) inventory.getItems().remove(itemToRemove);
+        AtomicInteger i = new AtomicInteger(0);
+        inventory.getItems().forEach((item) -> {item.setIndex(i.intValue());
+                                                i.getAndIncrement();
+        });
         return inventory;
     }
 }

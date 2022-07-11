@@ -17,7 +17,7 @@
         <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
     </ul>
 </header>
-<main th:object="${player}">
+<main th:object="${player}" th:with="countStat=${0}">
     <h1><span th:text="*{name}"></span>'s Inventory</h1>
     <table>
         <tr class="inventoryHead">
@@ -25,13 +25,13 @@
             <th>Description</th>
             <th>Quantity</th>
         </tr>
-        <tr th:each="item: *{inventory.items}">
-            <td><a th:href="@{/game/item}" th:text="${item.name}"></a></td>
+        <tr th:each="item,countStat: *{inventory.items}">
+            <td><a th:href="@{/game/item(option=${countStat.index})}" th:text="${item.name}"></a></td>
             <td th:text="${item.description}"></td>
             <td>x<span th:text="${item.quantity}"></span></td>
         </tr>
     </table>
-    <a th:href="@{/game/mainGame}">BACK TO GAME</a>
+    <a href="" onclick="history.back();">BACK</a>
 </main>
 <footer>
     <a th:href="@{/game/underConstruction}">ABOUT US</a>

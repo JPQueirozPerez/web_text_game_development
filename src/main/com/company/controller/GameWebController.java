@@ -7,7 +7,6 @@ import main.com.company.servicejpa.ServiceCharacterJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -16,7 +15,7 @@ import static main.com.company.controller.CharacterController.createPlayer;
 
 @Controller
 @RequestMapping("/game")
-@SessionAttributes({"player", "enemy"})
+@SessionAttributes({"player", "enemy", "playerInventory"})
 public class GameWebController {
     @Autowired
     CharacterService characterService;
@@ -55,7 +54,7 @@ public class GameWebController {
     }
 
     @RequestMapping("/newPlayer")
-    public String newPlayer(@RequestParam("name") String name, @RequestParam("charClass") String charClass, Model playerFromController){
+    public String newPlayer(@RequestParam("name") String name, @RequestParam("charClass") String charClass, Model playerFromController, Model playerInventoryFromController){
         Player player = createPlayer(name, charClass);
         playerFromController.addAttribute("player", player);
         return "redirect:mainGame";
@@ -63,8 +62,9 @@ public class GameWebController {
 
     @RequestMapping("/mainGame")
     public String mainGame(Model playerFromController) {
-        playerFromController.getAttribute("player");
-        return "game";
+        Player player = (Player) playerFromController.getAttribute("player");
+        if(player.getHealthPoints() <= 0) return "redirect:index";
+        else return "game";
     }
 
     @RequestMapping("/inventory")
@@ -74,9 +74,9 @@ public class GameWebController {
     }
 
     @RequestMapping("/item")
-    public String item(Model playerFromController) {
-        playerFromController.getAttribute("player");
-        InventoryService.equippingOrUsingObject((Player) playerFromController.getAttribute("player"), 0);
+    public String item(Model playerFromController, @RequestParam("option") int option) {
+        Player player = (Player) playerFromController.getAttribute("player");
+        InventoryService.equippingOrUsingObject(player, player.getInventory().getItems().get(option).getIndex()); //TODO change option int to the value of the chosen item
         return "redirect:inventory";
     }
 
@@ -90,16 +90,24 @@ public class GameWebController {
     public String newEnemy(Model enemyFromController, Model playerFromController){
         Player player = (Player) playerFromController.getAttribute("player");
         NPC enemy = CharacterController.createEnemyPlaceholder(player.getLevel());
-        playerFromController.addAttribute("enemy", enemy);
+        enemyFromController.addAttribute("enemy", enemy);
         return "redirect:fight";
     }
 
     @RequestMapping("/fight")
     public String fight(Model playerFromController, Model enemyFromController) {
-        enemyFromController.getAttribute("enemy");
-        playerFromController.getAttribute("player");
-//        Player player = FightController.fighting((Player) playerFromController.getAttribute("player"));
-//        playerFromController.addAttribute("player", player);
+        NPC enemy = (NPC) enemyFromController.getAttribute("enemy");
+        Player player = (Player) playerFromController.getAttribute("player");
+        if(player.getHealthPoints() <= 0) return "redirect:index";
+        else if(enemy.getHealthPoints() <= 0) return "redirect:mainGame";
+        else return "fight";
+    }
+
+    @RequestMapping("/attack")
+    public String attack(Model playerFromController, Model enemyFromController){
+        NPC enemy = (NPC) enemyFromController.getAttribute("enemy");
+        Player player = (Player) playerFromController.getAttribute("player");
+        FightService.initialTurn(enemy, player, true);
         return "fight";
     }
 
