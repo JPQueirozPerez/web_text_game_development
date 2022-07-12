@@ -62,9 +62,8 @@ public class GameWebController {
 
     @RequestMapping("/mainGame")
     public String mainGame(Model playerFromController) {
-        Player player = (Player) playerFromController.getAttribute("player");
-        if(player.getHealthPoints() <= 0) return "redirect:index";
-        else return "game";
+//        Player player = (Player) playerFromController.getAttribute("player");
+        return "game";
     }
 
     @RequestMapping("/inventory")
@@ -107,8 +106,9 @@ public class GameWebController {
     public String attack(Model playerFromController, Model enemyFromController){
         NPC enemy = (NPC) enemyFromController.getAttribute("enemy");
         Player player = (Player) playerFromController.getAttribute("player");
-        FightService.initialTurn(enemy, player, true);
-        return "fight";
+        if(player.getTotalSpeed() <= enemy.getTotalSpeed()) FightService.enemyTurn(enemy, player);
+        else FightService.playerTurn(enemy, player);
+        return "redirect:fight";
     }
 
     @RequestMapping("/underConstruction")

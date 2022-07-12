@@ -1,5 +1,6 @@
 package main.com.company.service;
 
+import main.com.company.controller.GameWebController;
 import main.com.company.model.Character;
 import main.com.company.model.Item;
 import main.com.company.model.NPC;
@@ -8,10 +9,11 @@ import main.com.company.controller.InventoryController;
 import main.com.company.view.FightView;
 import main.com.company.view.IOView;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.Random;
 
-import static main.com.company.controller.FightController.duringFight;
+//import main.com.company.controller.FightController.duringFight;
 
 @Service
 public class FightService {
@@ -62,7 +64,7 @@ public class FightService {
     }
 
     public static void fightResult(NPC enemy, Player player, String nextTurn) {
-        if(nextTurn.equals("exit")) IOView.gameLoopView(player);
+        if (nextTurn.equals("exit")) IOView.gameLoopView(player);
         if (player.getHealthPoints() <= 0) IOView.mainLoopView();
         else if (enemy.getHealthPoints() <= 0) {
             levelUp(player);
@@ -71,7 +73,7 @@ public class FightService {
             Item newItem = enemy.getTreasure();
             player.setInventory(InventoryController.addItemToInventory(player.getInventory().getItems(), player.getInventory(), newItem));
             CharacterService.addingMoney(player, enemy);
-            IOView.gameLoopView(player);
+//            IOView.gameLoopView(player);
         } else {
             switch (nextTurn) {
                 case "enemy": {
