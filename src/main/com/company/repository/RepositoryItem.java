@@ -1,9 +1,6 @@
 package main.com.company.repository;
 
-import main.com.company.model.EquippableItem;
-import main.com.company.model.Item;
-import main.com.company.model.NPC;
-import main.com.company.model.Player;
+import main.com.company.model.*;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,5 +18,11 @@ public interface RepositoryItem extends JpaRepository<Item,Integer> {
     public Optional<Item>  findByName( String name);
 
     @Query("select x from EquippableItem x where x.choise = ?1")
-    public Optional<EquippableItem> findByChoise(int choise);
+    public Optional<EquippableItem> findByChoiseEquippable(int choise);
+
+    @Query("select x from UsableItem x where x.choise = ?1")
+    public Optional<UsableItem> findByChoiseUsable(int choise);
+
+//    @Query("select x from UsableItem x where x.choise = ?1")
+//    public Optional findByCraft(String name);
 }

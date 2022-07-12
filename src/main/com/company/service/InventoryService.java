@@ -33,7 +33,7 @@ public class InventoryService {
    public static Item createItem() {
         int value = new Random().nextInt(1, 7);
         //the value 5-6 provide the error
-        EquippableItem eitem =  sp.findbyChoise(value);
+        EquippableItem eitem =  sp.findbyChoiseEquippable(value);
 
         if(eitem.getChoise() != 8){
 
@@ -42,7 +42,7 @@ public class InventoryService {
             return  item2;
         }
 
-       UsableItem usableItem = new UsableItem("Healing herb", "herb", "This herb has medicinal capabilities", 1, 1, "healing", 3,8);
+       UsableItem usableItem = sp.findbyChoiseUsable(value);
        Item item1 = usableItem;
         return item1;
     }

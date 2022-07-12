@@ -82,6 +82,18 @@ public class DemoApplication {
 			Item newItem6 = new EquippableItem("Dagger", "weapon", "A simple dagger", 3, 1, 0, 0, 0, 0, 2,7);
 			EquippableItem reward1 = new EquippableItem("Great armour", "armour", "A heavy armour with a good defense", 15, 1, 0, 0, 10, -3, 0,5);
 			EquippableItem reward2 = new EquippableItem("Helmet", "armour", "A basic iron helmet", 5, 1,0, 0, 2, 0, 0,6);
+			UsableItem usableItem = new UsableItem("Healing herb", "herb", "This herb has medicinal capabilities", 1, 1, "healing", 3,8);
+
+			UsableItem craftedItem1 = new UsableItem("Health potion", "Potion", "A potion with medicinal capabilities",5,0,"healing",10);
+			Item craftedItem2 = new Item("Golem arm", "Constructor", "The arm of a Golem", 20, 0);
+			Item craftedItem3 = new Item("Golem leg", "Constructor", "The leg of a Golem", 20, 0);
+			Item craftedItem4 = new Item("Golem head", "Constructor", "The head of a Golem", 20, 0);
+			Item craftedItem5 = new Item("Golem body", "Constructor", "The body of a Golem", 40, 0);
+			Item craftedItem6 = new Item("Leather",  "Material", "A piece of leather", 2, 0);
+			EquippableItem craftedItem7 = new EquippableItem("Leather helmet", "armour", "A basic helmet made of leather", 4, 0,0,0,2,0,0);
+			EquippableItem craftedItem8 = new EquippableItem("Leather gloves", "armour", "A basic pair of gloves made of leather", 4, 0,0,0,2,0,0);
+			EquippableItem craftedItem9 = new EquippableItem("Leather boots", "armour", "A basic pair of boots made of leather", 4, 0,0,0,2,0,0);
+			EquippableItem craftedItem10 = new EquippableItem("Leather armour", "armour", "A basic armour made of leather", 6, 0,0,0,4,0,0);
 			repoitem.save(reward1);
 			repoitem.save(reward2);
 			repoitem.save(newItem2);
@@ -90,6 +102,17 @@ public class DemoApplication {
 			repoitem.save(newItem5);
 			repoitem.save(newItem5);
 			repoitem.save(newItem6);
+			repoitem.save(usableItem);
+			repoitem.save(craftedItem1);
+			repoitem.save(craftedItem2);
+			repoitem.save(craftedItem3);
+			repoitem.save(craftedItem4);
+			repoitem.save(craftedItem5);
+			repoitem.save(craftedItem6);
+			repoitem.save(craftedItem7);
+			repoitem.save(craftedItem8);
+			repoitem.save(craftedItem9);
+			repoitem.save(craftedItem10);
 
 
 			Item fur = new Item("Fur", "material", "The fur of an wild animal", 1, 1);
