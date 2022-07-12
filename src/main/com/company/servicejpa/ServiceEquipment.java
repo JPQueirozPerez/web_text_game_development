@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceEquipment {
 
-   private final  RepositoryEquipment repoequipment;
+   private final RepositoryEquipment repoequipment;
 
 
     public ServiceEquipment(RepositoryEquipment repoequipment) {

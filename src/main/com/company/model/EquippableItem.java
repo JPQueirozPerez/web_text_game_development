@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Proxy(lazy = false)
-@DiscriminatorValue(value = "equippableItem_itemc")
+@DiscriminatorValue(value = "equippableItem")
 public class EquippableItem extends Item{
 
     int dexterity,

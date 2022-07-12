@@ -13,7 +13,7 @@ import javax.persistence.*;
 @ToString
 @Proxy(lazy = false)
 
-@DiscriminatorValue(value = "usableItem_itemc")
+@DiscriminatorValue(value = "usableItem")
 public class UsableItem extends Item{
     String use;
     int value,choise;

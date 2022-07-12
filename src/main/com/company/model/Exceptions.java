@@ -1,5 +1,7 @@
 package main.com.company.model;
 
+
+
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 

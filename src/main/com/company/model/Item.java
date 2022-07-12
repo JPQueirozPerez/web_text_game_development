@@ -19,8 +19,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iditem")
     private int iditem;
-    @Column(name = "type_item")
-    private boolean typeitem;
+
     private String description,
             name,
             type;

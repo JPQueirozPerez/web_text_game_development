@@ -1,7 +1,10 @@
 package main.com.company.model;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.Proxy;
+import org.springframework.data.jpa.repository.Modifying;
 
 import javax.persistence.*;
 
@@ -17,10 +20,12 @@ public class Player extends Character {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY )
     @JoinColumn(name = "inventory_fk")
+//    @OnDelete( action = OnDeleteAction.NO_ACTION )
     private Inventory inventory;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "equipment_fk")
+//    @OnDelete( action = OnDeleteAction.NO_ACTION )
     private Equipment equipment;
 
     private  String nameItem;
