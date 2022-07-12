@@ -23,19 +23,23 @@ public class Player extends Character {
     @JoinColumn(name = "equipment_fk")
     private Equipment equipment;
 
+    private int maxExperiencePoints;
+
     private  String nameItem;
 
-    public Player(String name, int level, Inventory inventory, Equipment equipment, int maxHealthPoints, int healthPoints, int strength, int defense, int speed, int dexterity, String charClass, int money, int experiencePoints, int charisma) {
+    public Player(String name, int level, Inventory inventory, Equipment equipment, int maxHealthPoints, int healthPoints, int strength, int defense, int speed, int dexterity, String charClass, int money, int experiencePoints, int charisma, int maxExperiencePoints) {
         super(name, level, maxHealthPoints, healthPoints, strength, defense, speed, dexterity, charClass, money, experiencePoints, charisma);
         this.inventory = inventory;
         this.equipment = equipment;
+        this.maxExperiencePoints = maxExperiencePoints;
     }
 
-    public Player(String name, int level, Inventory inventory, Equipment equipment, int maxHealthPoints, int healthPoints, int strength, int defense, int speed, int dexterity, String charClass, int money, int experiencePoints, int charisma, String nameItem) {
+    public Player(String name, int level, Inventory inventory, Equipment equipment, int maxHealthPoints, int healthPoints, int strength, int defense, int speed, int dexterity, String charClass, int money, int experiencePoints, int charisma, String nameItem, int maxExperiencePoints) {
         super(name, level, maxHealthPoints, healthPoints, strength, defense, speed, dexterity, charClass, money, experiencePoints, charisma);
         this.inventory = inventory;
         this.equipment = equipment;
         this.nameItem = nameItem;
+        this.maxExperiencePoints = maxExperiencePoints;
     }
 
 }

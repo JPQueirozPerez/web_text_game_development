@@ -22,8 +22,8 @@
     <table class="characterTable">
         <tr><th><strong>Class</strong></th><td th:text="*{charClass}"></td></tr>
         <tr><th><strong>Level</strong></th><td th:text="*{level}"></td></tr>
-        <tr><th><strong>Experience Points</strong></th>  <td th:text="*{experiencePoints}"></td></tr>
-        <tr><th><strong>Health Points</strong></th><td><span th:text="*{healthPoints}"></span> / <span th:text="*{maxHealthPoints}"></span></td></tr>
+        <tr><th><strong>Experience Points</strong></th><td><span th:text="*{experiencePoints}" /> / <span th:text="*{maxExperiencePoints}" /></td></tr>
+        <tr><th><strong>Health Points</strong></th><td><span th:text="*{healthPoints}"/> / <span th:text="*{maxHealthPoints}"/></td></tr>
         <tr><th><strong>Charisma</strong></th>  <td th:text="*{charisma}"></td></tr>
         <tr><th><strong>Defense</strong></th><td>
             <span th:text="*{defense}"></span><span th:if="*{equipment.totalDefense != 0}">
