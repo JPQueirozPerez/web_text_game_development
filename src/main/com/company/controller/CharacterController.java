@@ -70,7 +70,6 @@ public class CharacterController {
 
     public static int enemyLevelCalculation(int playerLevel){
         int level;
-        int value = new Random().nextInt((11 - 1) + 1);
         if (!(playerLevel < 4)) {
             return level = new Random().nextInt((playerLevel - 3), (playerLevel + 4));
         } else {
