@@ -6,10 +6,12 @@ import main.com.company.model.Player;
 import main.com.company.controller.InventoryController;
 import main.com.company.view.CharacterView;
 import main.com.company.view.ShopView;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ShopService {
 
     public static int itemPriceCalculation(int value, Item item) {

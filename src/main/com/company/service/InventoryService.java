@@ -7,12 +7,14 @@ import main.com.company.servicejpa.ServiceItemJPA;
 import main.com.company.view.InventoryView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-@Controller
+
+@Service
 public class InventoryService {
 
 
@@ -31,11 +33,11 @@ public class InventoryService {
 
 
    public static Item createItem() {
-        int value = new Random().nextInt(1, 7);
+        int value = new Random().nextInt(1, 8);
         //the value 5-6 provide the error
-        EquippableItem eitem =  sp.findbyChoise(value);
+        EquippableItem eitem =  sp.findbyChoice(value);
 
-        if(eitem.getChoise() != 8){
+        if(eitem.getChoice() != 8){
 
             Item item2 = eitem;
 

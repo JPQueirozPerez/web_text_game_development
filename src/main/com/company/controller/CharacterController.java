@@ -39,14 +39,15 @@ public class CharacterController {
 
         Player p1 = sc.findBycharClass(name,charClass);
         Item item = si.getItem(p1);
+        p1.setEquipment(new Equipment(0, 0, 0, 0, new ArrayList<>()));
         Player p2  = CharacterService.createPlayer(new ArrayList<>(), item,p1,new Inventory(10, new ArrayList<>()));
         return p2;
     }
 
     public static NPC createEnemyPlaceholder(int playerLevel) {
 
-        int value = new Random().nextInt(1, 11);
-        NPC npc =  sc.findbyChoise(value);
+        int value = new Random().nextInt(1, 12);
+        NPC npc =  sc.findbyChoice(value);
 
         if(npc.getCharClass().equals("beast")){
             Item fur = new Item("Fur", "material", "The fur of an wild animal", 1, 1);

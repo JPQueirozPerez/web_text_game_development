@@ -20,11 +20,13 @@ import static main.com.company.service.InventoryService.createItem;
 
 @SpringBootApplication
 public class DemoApplication {
+
 	@Autowired
 	static RepositoryChar repoChar;
-	@Autowired
 
+	@Autowired
 	static RepositoryItem repoitem;
+
 
 
 
@@ -37,11 +39,6 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 		save(repoChar,repoitem);
 		IOView.mainLoopView();
-
-
-
-
-
 	}
 	@Bean
 

@@ -1,14 +1,13 @@
 package main.com.company.service;
 
-import main.com.company.model.Inventory;
-import main.com.company.model.Item;
-import main.com.company.model.NPC;
-import main.com.company.model.Player;
+import main.com.company.model.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 import static main.com.company.view.CharacterView.moneyMessage;
 
+@Service
 public class CharacterService {
 
     public static void addingMoney(Player player, NPC enemy) {
@@ -18,7 +17,7 @@ public class CharacterService {
 
     // sum characteristics player + items equipments
     public static void setPlayerTotalCharacteristics(Player player) {
-        player.setTotalStrength(player.getEquipment().getTotalStrenght() + player.getStrength());
+        player.setTotalStrength(player.getEquipment().getTotalStrength() + player.getStrength());
         player.setTotalDefense(player.getEquipment().getTotalDefense() + player.getDefense());
         player.setTotalSpeed(player.getEquipment().getTotalSpeed() + player.getSpeed());
     }

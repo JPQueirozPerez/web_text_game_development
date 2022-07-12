@@ -24,7 +24,7 @@ public class Equipment {
     private int quantityEquippedItems,
             totalDefense,
             totalSpeed,
-            totalStrenght;
+            totalStrength;
 
     @OneToMany(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     @JoinColumn(name = "equipment_item_fk")
@@ -35,7 +35,7 @@ public class Equipment {
         this.quantityEquippedItems = i;
         this.totalDefense = i1;
         this.totalSpeed = i2;
-        this.totalStrenght = i3;
+        this.totalStrength = i3;
         this.equipments = equipments;
     }
 }

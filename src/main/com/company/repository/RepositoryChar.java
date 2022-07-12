@@ -16,6 +16,18 @@ public interface RepositoryChar extends JpaRepository<Character,Integer> {
     @Query("select p from Player p where p.charClass =?1")
     public Optional<Player> findBycharClass(String charClass);
 
-    @Query("select x from NPC x where x.choise = ?1")
-    public Optional<NPC> findByChoise(int choise);
+    @Query("select x from NPC x where x.choice = ?1")
+    public Optional<NPC> findByChoice(int choice);
+
+    @Query("select c from Character c where c.name = ?1")
+    public Optional<NPC> findByName(String name);
+
+    @Query("select c from Character c where c.charClass is not null ")
+    public Iterable<Character> findAllChar();
+
+    @Query("select p from Player p where p.charClass is not null ")
+    public Iterable<Player> findAllPlayer();
+
+    @Query("select n from NPC n where n.charClass is not null ")
+    public Iterable<NPC> findAllNPC();
 }

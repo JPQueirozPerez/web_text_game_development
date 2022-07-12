@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <html xmlns:th="http://www.thymeleaf.org"></html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}" />
+    <title>Inventory</title>
+</head>
+<body>
+<header>
+    <div class="header-img"><img src="/img/logo.jpg"></div>
+    <ul class="header-nav">
+        <li><a th:href="@{/game/underConstruction}">OPTIONS</a></li>
+        <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
+    </ul>
+</header>
+<main th:object="${player}" th:with="countStat=${0}">
+    <h1><span th:text="*{name}"></span>'s Inventory</h1>
+    <table>
+        <tr class="inventoryHead">
+            <th>Item</th>
+            <th>Description</th>
+            <th>Quantity</th>
+        </tr>
+        <tr th:each="item,countStat: *{inventory.items}">
+            <td><a th:href="@{/game/item(option=${countStat.index})}" th:text="${item.name}"></a></td>
+            <td th:text="${item.description}"></td>
+            <td>x<span th:text="${item.quantity}"></span></td>
+        </tr>
+    </table>
+    <a href="" onclick="history.back();">BACK</a>
+</main>
+<footer>
+    <a th:href="@{/game/underConstruction}">ABOUT US</a>
+</footer>
+</body>
+</html>
