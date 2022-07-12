@@ -33,11 +33,11 @@ public class InventoryService {
 
 
    public static Item createItem() {
-        int value = new Random().nextInt(1, 7);
+        int value = new Random().nextInt(1, 8);
         //the value 5-6 provide the error
-        EquippableItem eitem =  sp.findbyChoise(value);
+        EquippableItem eitem =  sp.findbyChoice(value);
 
-        if(eitem.getChoise() != 8){
+        if(eitem.getChoice() != 8){
 
             Item item2 = eitem;
 

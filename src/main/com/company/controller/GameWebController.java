@@ -1,5 +1,6 @@
 package main.com.company.controller;
 
+import main.com.company.model.Inventory;
 import main.com.company.model.NPC;
 import main.com.company.model.Player;
 import main.com.company.service.*;
@@ -7,7 +8,6 @@ import main.com.company.servicejpa.ServiceCharacterJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -16,7 +16,7 @@ import static main.com.company.controller.CharacterController.createPlayer;
 
 @Controller
 @RequestMapping("/game")
-@SessionAttributes({"player", "enemy"})
+@SessionAttributes({"player", "enemy", "shopInventory"})
 public class GameWebController {
     @Autowired
     CharacterService characterService;
@@ -63,7 +63,7 @@ public class GameWebController {
 
     @RequestMapping("/mainGame")
     public String mainGame(Model playerFromController) {
-        playerFromController.getAttribute("player");
+//        Player player = (Player) playerFromController.getAttribute("player");
         return "game";
     }
 
@@ -74,9 +74,9 @@ public class GameWebController {
     }
 
     @RequestMapping("/item")
-    public String item(Model playerFromController) {
-        playerFromController.getAttribute("player");
-        InventoryService.equippingOrUsingObject((Player) playerFromController.getAttribute("player"), 0);
+    public String item(Model playerFromController, @RequestParam("option") int option) {
+        Player player = (Player) playerFromController.getAttribute("player");
+        InventoryService.equippingOrUsingObject(player, player.getInventory().getItems().get(option).getIndex());
         return "redirect:inventory";
     }
 
@@ -90,17 +90,35 @@ public class GameWebController {
     public String newEnemy(Model enemyFromController, Model playerFromController){
         Player player = (Player) playerFromController.getAttribute("player");
         NPC enemy = CharacterController.createEnemyPlaceholder(player.getLevel());
-        playerFromController.addAttribute("enemy", enemy);
+        enemyFromController.addAttribute("enemy", enemy);
         return "redirect:fight";
     }
 
     @RequestMapping("/fight")
     public String fight(Model playerFromController, Model enemyFromController) {
-        enemyFromController.getAttribute("enemy");
-        playerFromController.getAttribute("player");
-//        Player player = FightController.fighting((Player) playerFromController.getAttribute("player"));
-//        playerFromController.addAttribute("player", player);
-        return "fight";
+        NPC enemy = (NPC) enemyFromController.getAttribute("enemy");
+        Player player = (Player) playerFromController.getAttribute("player");
+        if(player.getHealthPoints() <= 0) return "redirect:index";
+        else if(enemy.getHealthPoints() <= 0) return "redirect:mainGame";
+        else return "fight";
+    }
+
+    @RequestMapping("/attack")
+    public String attack(Model playerFromController, Model enemyFromController){
+        NPC enemy = (NPC) enemyFromController.getAttribute("enemy");
+        Player player = (Player) playerFromController.getAttribute("player");
+        if(player.getTotalSpeed() <= enemy.getTotalSpeed()) FightService.enemyTurn(enemy, player);
+        else FightService.playerTurn(enemy, player);
+        return "redirect:fight";
+    }
+
+    @RequestMapping("/shop")
+    public String shop(Model playerFromController, Model shopInventoryFromController){
+        Inventory inventory = ShopController.createShopInventory();
+        shopInventoryFromController.addAttribute("shopInventory", inventory);
+        Inventory shopInventory = (Inventory) shopInventoryFromController.getAttribute("shopInventory");
+        Player player = (Player) playerFromController.getAttribute("player");
+        return "shop"; //TODO Shop inventory only having 100 items and not 200
     }
 
     @RequestMapping("/underConstruction")

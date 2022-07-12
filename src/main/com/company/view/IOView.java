@@ -1,6 +1,7 @@
 
 package main.com.company.view;
 
+import main.com.company.frontcontroller.FrontController;
 import main.com.company.model.Player;
 
 import java.util.Scanner;
@@ -8,8 +9,8 @@ import java.util.Scanner;
 import static main.com.company.frontcontroller.FrontController.gameLoopController;
 import static main.com.company.frontcontroller.FrontController.mainLoopController;
 import static main.com.company.utils.Utilities.ask;
-//import static com.company.view.Menu.mainMenuView;
-//import static com.company.view.Menu.menuNewGameView;
+import static main.com.company.view.Menu.mainMenuView;
+import static main.com.company.view.Menu.menuNewGameView;
 
 public class IOView {
 

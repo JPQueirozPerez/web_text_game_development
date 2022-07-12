@@ -1,5 +1,6 @@
 package main.com.company.service;
 
+import main.com.company.controller.GameWebController;
 import main.com.company.model.Character;
 import main.com.company.model.Item;
 import main.com.company.model.NPC;
@@ -8,10 +9,11 @@ import main.com.company.controller.InventoryController;
 import main.com.company.view.FightView;
 import main.com.company.view.IOView;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.Random;
 
-import static main.com.company.controller.FightController.duringFight;
+//import main.com.company.controller.FightController.duringFight;
 
 @Service
 public class FightService {
@@ -48,7 +50,7 @@ public class FightService {
 
 
         // Menu Options during Fight
-        duringFight(player,enemy);
+//        duringFight(player,enemy);
 
         if (!attackSuccess(player, enemy)) {
             FightView.fightingMessages("6", enemy, player);
@@ -62,27 +64,39 @@ public class FightService {
     }
 
     public static void fightResult(NPC enemy, Player player, String nextTurn) {
-        if(nextTurn.equals("exit")) IOView.gameLoopView(player);
-        if (player.getHealthPoints() <= 0) IOView.mainLoopView();
-        else if (enemy.getHealthPoints() <= 0) {
+        boolean turn = true;
+//        if (nextTurn.equals("exit")) IOView.gameLoopView(player);
+        if (enemy.getHealthPoints() <= 0) {
             levelUp(player);
             FightView.fightingMessages("9", enemy, player);
             FightView.fightingMessages("10", enemy, player);
             Item newItem = enemy.getTreasure();
             player.setInventory(InventoryController.addItemToInventory(player.getInventory().getItems(), player.getInventory(), newItem));
             CharacterService.addingMoney(player, enemy);
-            IOView.gameLoopView(player);
         } else {
-            switch (nextTurn) {
-                case "enemy": {
-                    enemyTurn(enemy, player);
-                    break;
-                }
-                case "player": {
-                    playerTurn(enemy, player);
-                    break;
-                }
+            if(nextTurn.equals("enemy") && (player.getTotalSpeed() > enemy.getTotalSpeed()) && turn){
+                enemyTurn(enemy,player);
+                turn = false;
+            }else if(nextTurn.equals("player") && (player.getTotalSpeed() <= enemy.getTotalSpeed()) && turn){
+                playerTurn(enemy, player);
+                turn = false;
+            }else if(nextTurn.equals("enemy") && (player.getTotalSpeed() > enemy.getTotalSpeed()) && !turn){
+                playerTurn(enemy, player);
+                turn = true;
+            }else if(nextTurn.equals("player") && (player.getTotalSpeed() <= enemy.getTotalSpeed()) && !turn){
+                enemyTurn(enemy, player);
+                turn = true;
             }
+//            switch (nextTurn) {
+//                case "enemy": {
+//                    enemyTurn(enemy, player);
+//                    break;
+//                }
+//                case "player": {
+//                    playerTurn(enemy, player);
+//                    break;
+//                }
+//            }
         }
     }
 

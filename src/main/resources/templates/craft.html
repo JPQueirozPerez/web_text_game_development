@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/img/favicon.png" />
     <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}" />
-    <title>Inventory</title>
+    <title>Crafting</title>
 </head>
 <body>
 <header>
@@ -18,12 +18,12 @@
     </ul>
 </header>
 <main th:object="${player}" th:with="countStat=${0}">
-    <h1><span th:text="*{name}"></span>'s Inventory</h1>
+    <h1>Crafting List</h1>
     <table>
         <tr class="inventoryHead">
             <th>Item</th>
             <th>Description</th>
-            <th>Quantity</th>
+            <th>Ingredient</th>
         </tr>
         <tr th:each="item,countStat: *{inventory.items}">
             <td><a th:href="@{/game/item(option=${countStat.index})}" th:text="${item.name}"></a></td>
