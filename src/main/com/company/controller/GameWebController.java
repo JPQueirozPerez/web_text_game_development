@@ -68,7 +68,7 @@ public class GameWebController {
     }
 
     @RequestMapping("/inventory")
-    public String inventory(Model playerFromController) {
+    public String inventory(Model playerFromController) { //TODO problem with initial capacity of inventory (the capacity isn't set in CharacterController)
         playerFromController.getAttribute("player");
         return "inventory";
     }
@@ -113,7 +113,7 @@ public class GameWebController {
     }
 
     @RequestMapping("/shop")
-    public String shop(Model playerFromController, Model shopInventoryFromController){
+    public String shop(Model playerFromController, Model shopInventoryFromController){ //TODO problem with instanceOf
         Inventory inventory = ShopController.createShopInventory();
         shopInventoryFromController.addAttribute("shopInventory", inventory);
         Inventory shopInventory = (Inventory) shopInventoryFromController.getAttribute("shopInventory");

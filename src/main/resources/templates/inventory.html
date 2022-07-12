@@ -19,6 +19,7 @@
 </header>
 <main th:object="${player}" th:with="countStat=${0}">
     <h1><span th:text="*{name}"></span>'s Inventory</h1>
+    <h1 th:text="*{inventory.capacity}"></h1>
     <table>
         <tr class="inventoryHead">
             <th>Item</th>

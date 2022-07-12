@@ -19,7 +19,7 @@
 <main>
     <span th:object="${player}">
     <h1><span th:text="*{name}"></span>'s Inventory</h1>
-                <h1 th:text="*{inventory.capacity}"></h1>
+    <h1 th:text="*{inventory.capacity}"></h1>
     <table>
         <tr class="inventoryHead">
             <th>Item</th>
@@ -35,9 +35,11 @@
             <td th:text="${item.description}"/>
             <td>x<span th:text="${item.quantity}"/></td>
             <td>x<span th:text="${item.price}"/></td>
-            <td th:text="${item.defense > 0} ? '+' + ${item.defense} : ${item.defense}"/>
-            <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>
-            <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>
+<!--            <span th:if="${item instanceof EquipableItem}">-->
+<!--            <td th:text="${item.defense > 0} ? '+' + ${item.defense} : ${item.defense}"/>-->
+<!--            <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>-->
+<!--            <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>-->
+<!--            </span>-->
         </tr>
     </table>
         </span>
@@ -60,9 +62,11 @@
                 <td th:text="${item.description}"/>
                 <td>x<span th:text="${item.quantity}"/></td>
                 <td>x<span th:text="${item.price}"/></td>
-                <td th:text="${item.defense > 0} ? '+' + ${item.defense} : ${item.defense}"/>
-                <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>
-                <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>
+<!--                <span th:if="${item instanceof EquipableItem}">-->
+<!--                <td th:text="${item.defense > 0} ? '+' + ${item.defense} : ${item.defense}"/>-->
+<!--                <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>-->
+<!--                <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>-->
+<!--                </span>-->
             </tr>
         </table>
         </span>
