@@ -1,5 +1,6 @@
 package main.com.company.controller;
 
+import main.com.company.model.Inventory;
 import main.com.company.model.NPC;
 import main.com.company.model.Player;
 import main.com.company.service.*;
@@ -15,7 +16,7 @@ import static main.com.company.controller.CharacterController.createPlayer;
 
 @Controller
 @RequestMapping("/game")
-@SessionAttributes({"player", "enemy", "playerInventory"})
+@SessionAttributes({"player", "enemy", "shopInventory"})
 public class GameWebController {
     @Autowired
     CharacterService characterService;
@@ -54,7 +55,7 @@ public class GameWebController {
     }
 
     @RequestMapping("/newPlayer")
-    public String newPlayer(@RequestParam("name") String name, @RequestParam("charClass") String charClass, Model playerFromController, Model playerInventoryFromController){
+    public String newPlayer(@RequestParam("name") String name, @RequestParam("charClass") String charClass, Model playerFromController){
         Player player = createPlayer(name, charClass);
         playerFromController.addAttribute("player", player);
         return "redirect:mainGame";
@@ -75,7 +76,7 @@ public class GameWebController {
     @RequestMapping("/item")
     public String item(Model playerFromController, @RequestParam("option") int option) {
         Player player = (Player) playerFromController.getAttribute("player");
-        InventoryService.equippingOrUsingObject(player, player.getInventory().getItems().get(option).getIndex()); //TODO change option int to the value of the chosen item
+        InventoryService.equippingOrUsingObject(player, player.getInventory().getItems().get(option).getIndex());
         return "redirect:inventory";
     }
 
@@ -109,6 +110,15 @@ public class GameWebController {
         if(player.getTotalSpeed() <= enemy.getTotalSpeed()) FightService.enemyTurn(enemy, player);
         else FightService.playerTurn(enemy, player);
         return "redirect:fight";
+    }
+
+    @RequestMapping("/shop")
+    public String shop(Model playerFromController, Model shopInventoryFromController){
+        Inventory inventory = ShopController.createShopInventory();
+        shopInventoryFromController.addAttribute("shopInventory", inventory);
+        Inventory shopInventory = (Inventory) shopInventoryFromController.getAttribute("shopInventory");
+        Player player = (Player) playerFromController.getAttribute("player");
+        return "shop"; //TODO Shop inventory only having 100 items and not 200
     }
 
     @RequestMapping("/underConstruction")
