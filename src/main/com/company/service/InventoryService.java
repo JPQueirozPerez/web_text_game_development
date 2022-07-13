@@ -35,7 +35,8 @@ public class InventoryService {
    public static Item createItem() {
         int value = new Random().nextInt(1, 8);
         //the value 5-6 provide the error
-        EquippableItem eitem =  sp.findbyChoice(value);
+//        EquippableItem eitem =  sp.findbyChoiceEquippable(value);
+       EquippableItem eitem =  sp.findbyChoice(value);
 
         if(eitem.getChoice() != 8){
 

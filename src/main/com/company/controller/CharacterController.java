@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import static main.com.company.service.InventoryService.createItem;
+
 @Controller
 public class CharacterController {
 

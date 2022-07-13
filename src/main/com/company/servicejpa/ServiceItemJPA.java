@@ -1,20 +1,23 @@
 package main.com.company.servicejpa;
 
-import main.com.company.model.EquippableItem;
-import main.com.company.model.Item;
-import main.com.company.model.Player;
+import main.com.company.model.*;
 import main.com.company.repository.RepositoryItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.Optional;
+
+//import static com.sun.tools.classfile.Attribute.Exceptions;
 
 @Service
 public class ServiceItemJPA {
 
     @Autowired
     private RepositoryItem repoeitem;
+
+
 
     private static RepositoryItem repoei;
 
@@ -23,13 +26,36 @@ public class ServiceItemJPA {
         this.repoei = repoeitem;
 
     }
-
-
-
     public EquippableItem findbyChoice(int choice){
         Optional<EquippableItem> o = repoei.findByChoice(choice);
         EquippableItem n = o.get();
         return n;
+    }
+//    ///
+//    public EquippableItem findbyChoiceEquippable(int choice){
+//        Optional<EquippableItem> o = repoei.findByChoiceEquippable(choice);
+//        EquippableItem n = o.get();
+//        return n;
+//    }
+
+//    public UsableItem findbyChoiceUsable(int choice){
+//        Optional<UsableItem> o = repoei.findByChoiceUsable(choice);
+//        UsableItem n = o.get();
+//        return n;
+//    }
+//
+    public <T> T findByNameMultiply(String name){
+        Optional<Object> o = repoei.findByNameMultiply(name);
+        if (o.get() instanceof Item){
+            return (T) o.get();
+        }
+        if (o.get() instanceof EquippableItem){
+            return (T) o.get();
+        }
+        if (o.get() instanceof UsableItem){
+            return (T) o.get();
+        }
+        return null ;
     }
 
     public Item getItem(Player p ){
@@ -38,5 +64,23 @@ public class ServiceItemJPA {
 
     }
 
+//    public void deleteByName(String name){
+//        Optional<Item> item = repoei.findByName(name);
+//        if (item.get()==null) {
+//            throw new Exceptions("Item not found", HttpStatus.NOT_FOUND);
+//        }
+//
+//        repoeitem.delete(item.get());
+//    }
 
+    public Item update(String name,Item item){
+        Optional<Item> item2 = repoei.findByName(name);
+        Item item3 = item2.get();
+        if(item3!=null){
+//            the wishes of the front-end
+            return repoeitem.save(item3);
+        }
+        return null;
+
+    }
 }

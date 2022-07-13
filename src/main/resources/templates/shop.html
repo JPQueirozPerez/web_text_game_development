@@ -49,6 +49,7 @@
 
     <span th:object="${shopInventory}" th:with="countStat=${0}">
         <h1>Shop's Inventory </h1>
+        <h2 th:text="*{capacity}" />
         <table>
             <tr class="inventoryHead">
                 <th>Index</th>

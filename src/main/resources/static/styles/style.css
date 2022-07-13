@@ -121,6 +121,10 @@ footer {
     height: 5%;
 }
 
+input[type=text]:focus {
+  background-color: #967444;
+}
+
 
 table {
     background-color: #94c263;

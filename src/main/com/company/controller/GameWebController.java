@@ -143,6 +143,13 @@ public class GameWebController {
         return "redirect:shop";
     }
 
+    @RequestMapping("/craft")
+    public String craft(Model craftListFromController, Model playerFromController){
+        Player player = (Player) playerFromController.getAttribute("player");
+//        craftListFromController.getAttribute("craftList", );
+        return "craft";
+    }
+
     @RequestMapping("/underConstruction")
     public String underConstruction() {
         return "underConstructionPage";

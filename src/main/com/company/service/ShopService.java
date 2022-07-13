@@ -29,7 +29,7 @@ public class ShopService {
         List<Item> shopItems = new ArrayList<>(shopInventory.getItems());
         if (value != 1) {
             Item item = InventoryService.searchItem(items,itemIndex);
-            if (player.getInventory().getItems().get(itemIndex-1).getQuantity() < quantity)
+            if (player.getInventory().getItems().get(itemIndex).getQuantity() < quantity)
                 ShopView.shopMessage(3, item.getName(), 0, quantity);
             else {
                 int price = itemPriceCalculation(2, item) * quantity;
