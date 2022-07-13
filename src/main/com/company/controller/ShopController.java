@@ -14,6 +14,7 @@ import static main.com.company.service.InventoryService.createItem;
 public class ShopController {
 
     public static Inventory createShopInventory(){
+        int index = 0;
         List<Item> items = new ArrayList<>(100);
         Inventory shopInventory = new Inventory(200, items);
         for (int i = 0; i < 100; i++) {
@@ -23,7 +24,11 @@ public class ShopController {
                 items.stream().filter(z -> z.getName().equals(name)).forEach( x -> x.setQuantity(x.getQuantity()+1));
             }
             //shopInventory.getItems().items.replace(newItem, items.get(newItem) + 1);
-            else items.add(newItem);
+            else {
+                newItem.setIndex(index);
+                items.add(newItem);
+                index++;
+            }
             newItem.setQuantity(newItem.getQuantity()+1);
             shopInventory.setItems(items);
             shopInventory.setCapacity(shopInventory.getCapacity() - 1);
