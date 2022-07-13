@@ -1,6 +1,7 @@
 package main.com.company.servicejpa;
 
 import main.com.company.model.EquippableItem;
+import main.com.company.model.Player;
 import main.com.company.model.ValuesCraftController;
 import main.com.company.repository.RepositoryItem;
 import main.com.company.repository.RepositoryValuesCraftController;
@@ -29,6 +30,11 @@ public class ServiceCraftController {
         Optional<ValuesCraftController> o = repoC.findById(id);
         ValuesCraftController n = o.get();
         return n;
+    }
+
+    public Iterable<ValuesCraftController> findAll(){
+        Iterable<ValuesCraftController> craftRecipes = repoC.findAllById();
+        return craftRecipes;
     }
 
 

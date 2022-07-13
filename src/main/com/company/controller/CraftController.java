@@ -46,26 +46,26 @@ public class CraftController {
         ValuesCraftController vc = sc.findbyID(value);
         Item ingredientItem = InventoryService.searchItemByName(inventory,vc.getIngredientName());
         if(ingredientItem != null) quantity = ingredientItem.getQuantity();
-        if(CraftService.checkEnoughIngredients(quantity,vc.getNeccesaryQuantity(),craftQuantity,vc.getIngredientName(),vc.getCraftItemName())){
+        if(CraftService.checkEnoughIngredients(quantity,vc.getNecessaryQuantity(),craftQuantity,vc.getIngredientName(),vc.getCraftItemName())){
 
 
 
             if (Stream.of(1).anyMatch(x -> x == vc.getId())) {
                 UsableItem craftedItem = sp.findByNameMultiply(vc.getCraftItemName());
                 craftedItem.setQuantity(craftQuantity);
-                CraftService.crafting(player, vc.getNeccesaryQuantity() * craftQuantity,craftedItem , ingredientItem, craftQuantity);
+                CraftService.crafting(player, vc.getNecessaryQuantity() * craftQuantity,craftedItem , ingredientItem, craftQuantity);
             }
 
             if (Stream.of(2,3,4,5,6).anyMatch(x -> x == vc.getId())) {
                 Item craftedItem = sp.findByNameMultiply(vc.getCraftItemName());
                 craftedItem.setQuantity(craftQuantity);
-                CraftService.crafting(player, vc.getNeccesaryQuantity() * craftQuantity,craftedItem , ingredientItem, craftQuantity);
+                CraftService.crafting(player, vc.getNecessaryQuantity() * craftQuantity,craftedItem , ingredientItem, craftQuantity);
             }
 
             if (Stream.of(7,8,9,10).anyMatch(x -> x == vc.getId())) {
                 EquippableItem craftedItem = sp.findByNameMultiply(vc.getCraftItemName());
                 craftedItem.setQuantity(craftQuantity);
-                CraftService.crafting(player, vc.getNeccesaryQuantity() * craftQuantity,craftedItem , ingredientItem, craftQuantity);
+                CraftService.crafting(player, vc.getNecessaryQuantity() * craftQuantity,craftedItem , ingredientItem, craftQuantity);
             }
 
 
