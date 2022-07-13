@@ -30,7 +30,6 @@ public class InventoryService {
 
    public static Item createItem() {
         int value = new Random().nextInt(1, 20);
-        //the value 5-6 provide the error
         return sp.findByChoiseMultiply(value);
     }
 

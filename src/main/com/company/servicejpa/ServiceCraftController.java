@@ -16,8 +16,6 @@ public class ServiceCraftController {
     @Autowired
     private RepositoryValuesCraftController repoCraft;
 
-
-
     private static RepositoryValuesCraftController repoC;
 
     @PostConstruct
@@ -31,6 +29,5 @@ public class ServiceCraftController {
         ValuesCraftController n = o.get();
         return n;
     }
-
 
 }

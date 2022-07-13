@@ -22,8 +22,8 @@ public class ItemRest {
     //---------------------------Rest Item------------------------------------------//
 
     @GetMapping("/{name}")
-    public Item getByName(@PathVariable String name){
-        Optional<Item>  item = repoItem.findByName(name);
+    public Item getByNameItem(@PathVariable String name){
+        Optional<Item>  item = repoItem.findByNameItem(name);
         return item.get();
     }
 
@@ -33,12 +33,12 @@ public class ItemRest {
     }
 
     @PutMapping("/update/{name}")
-    public  Item update(@PathVariable String name, @RequestBody Item item){
+    public  Item updateItem(@PathVariable String name, @RequestBody Item item){
         return serviceItemJPA.update(name,item);
     }
 
     @DeleteMapping("/delete/{name}")
-    public ResponseEntity<Void> delete(@PathVariable("name") String name) {
+    public ResponseEntity<Void> deleteItem(@PathVariable("name") String name) {
         serviceItemJPA.deleteByName(name);
         return ResponseEntity.noContent().build();
     }

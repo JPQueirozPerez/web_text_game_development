@@ -22,8 +22,6 @@ public class ServiceCharacterJPA {
     @Autowired
     private RepositoryEquipment repoE;
 
-
-
     private  static RepositoryChar repoC;
 
 
@@ -32,8 +30,6 @@ public class ServiceCharacterJPA {
     @PostConstruct
     public void init(){
         this.repoC = repoChar;
-
-
     }
 
     public Player findBycharClass(String name, String charClass ){
@@ -44,7 +40,7 @@ public class ServiceCharacterJPA {
     }
 
     public NPC findbyChoise(int choise){
-        Optional<NPC> o = repoC.findByChoise(choise);
+        Optional<NPC> o = repoC.findByChoiseNPC(choise);
         NPC n = o.get();
         return n;
     }
@@ -61,7 +57,7 @@ public class ServiceCharacterJPA {
     }
 
     public NPC update(String name, NPC npc){
-        Optional<NPC> npc2 = repoChar.findByName(name);
+        Optional<NPC> npc2 = repoChar.findByNameNPC(name);
         NPC npc3 = npc2.get();
         if(npc3!=null){
 //            the wishes of the front-end
@@ -85,7 +81,7 @@ public class ServiceCharacterJPA {
         repoChar.delete(player.get());
     }
     public void deleteByname(String name){
-        Optional<NPC> npc = repoChar.findByName(name);
+        Optional<NPC> npc = repoChar.findByNameNPC(name);
         if (npc.get()==null) {
             throw new Exceptions("npc not found", HttpStatus.NOT_FOUND);
         }

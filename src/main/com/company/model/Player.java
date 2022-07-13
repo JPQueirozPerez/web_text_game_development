@@ -17,15 +17,12 @@ import javax.persistence.*;
 @DiscriminatorValue(value = "player_har")
 public class Player extends Character {
 
-
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY )
     @JoinColumn(name = "inventory_fk")
-//    @OnDelete( action = OnDeleteAction.NO_ACTION )
     private Inventory inventory;
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "equipment_fk")
-//    @OnDelete( action = OnDeleteAction.NO_ACTION )
     private Equipment equipment;
 
     private  String nameItem;

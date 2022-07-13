@@ -15,8 +15,6 @@ import javax.persistence.Id;
 @ToString
 public class ValuesCraftController {
 
-
-
     @Id
     int id;
     String ingredientName;

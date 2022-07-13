@@ -20,8 +20,6 @@ public class EquippableItem extends Item{
             speed,
             strength;
 
-
-
     public EquippableItem(String name, String type, String description, int price, int quantity, int dexterity, int charisma, int defense, int speed, int strength, int choise) {
         super(name, type, description, price, quantity,choise);
         this.dexterity = dexterity;

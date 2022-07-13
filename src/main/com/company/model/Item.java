@@ -29,8 +29,6 @@ public class Item {
             choise;
 
 
-
-
     public Item(String name, String type, String description, int price, int quantity, int choise) {
         this.name = name;
         this.type = type;

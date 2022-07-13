@@ -12,12 +12,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Proxy(lazy = false)
-
 @DiscriminatorValue(value = "usableItem")
 public class UsableItem extends Item{
     String use;
     int value;
-
 
     public UsableItem(String name, String type, String description, int price, int quantity, String use, int value, int choise) {
         super(name, type, description, price, quantity, choise);

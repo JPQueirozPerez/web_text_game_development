@@ -4,13 +4,10 @@ import main.com.company.model.*;
 import main.com.company.model.Character;
 import main.com.company.repository.RepositoryChar;
 import main.com.company.servicejpa.ServiceCharacterJPA;
-import main.com.company.servicejpa.ServiceEquipment;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -27,23 +24,23 @@ public class CharacterRest {
     //---------------------------Rest Player------------------------------------------//
 
     @GetMapping("/player/{charClass}")
-    public Player getByNameP(@PathVariable String charClass){
+    public Player getByNamePlayer(@PathVariable String charClass){
         Optional<Player> player = repositoryChar.findBycharClass(charClass);
         return player.get();
     }
 
     @GetMapping("/listChar")
-    public Iterable<Character> listarChar(){
+    public Iterable<Character> listChar(){
         return  repositoryChar.findAllChar();
     }
 
     @GetMapping("/listPlayer")
-    public Iterable<Player> listarPlayer(){
+    public Iterable<Player> listPlayer(){
         return  repositoryChar.findAllPlayer();
     }
 
     @GetMapping("/listNPC")
-    public Iterable<NPC> listarNPC(){
+    public Iterable<NPC> listNPC(){
         return  repositoryChar.findAllNPC();
     }
 
@@ -53,12 +50,12 @@ public class CharacterRest {
     }
 
     @PutMapping("/player/update/{charClass}")
-    public  Player updateP(@PathVariable String charClass, @RequestBody Player player){
+    public  Player updatePlayer(@PathVariable String charClass, @RequestBody Player player){
         return serviceChar.update(charClass,player);
     }
 
     @DeleteMapping("/player/delete/{charClass}")
-    public ResponseEntity<Void> deleteP(@PathVariable("charClass") String charClass) {
+    public ResponseEntity<Void> deletePlayer(@PathVariable("charClass") String charClass) {
         serviceChar.deleteBycharClass(charClass);
         return ResponseEntity.noContent().build();
     }
@@ -67,8 +64,8 @@ public class CharacterRest {
     //---------------------------Rest NPC------------------------------------------//
 
     @GetMapping("/npc/{name}")
-    public NPC getByNameN(@PathVariable String name){
-        Optional<NPC> npc = repositoryChar.findByName(name);
+    public NPC getByNameNPC(@PathVariable String name){
+        Optional<NPC> npc = repositoryChar.findByNameNPC(name);
         return npc.get();
     }
 
@@ -78,12 +75,12 @@ public class CharacterRest {
     }
 
     @PutMapping("/npc/update/{name}")
-    public  NPC update(@PathVariable String name, @RequestBody NPC npc){
+    public  NPC updateNPC(@PathVariable String name, @RequestBody NPC npc){
         return serviceChar.update(name,npc);
     }
 
     @DeleteMapping("/npc/delete/{name}")
-    public ResponseEntity<Void> deleteN(@PathVariable("name") String name) {
+    public ResponseEntity<Void> deleteNPC(@PathVariable("name") String name) {
         serviceChar.deleteByname(name);
         return ResponseEntity.noContent().build();
     }

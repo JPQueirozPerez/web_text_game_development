@@ -29,7 +29,6 @@ public class CraftController {
     private  static ServiceItemJPA sp;
 
 
-
     @PostConstruct
     public void init(){
         this.sc = serviceCraft;
@@ -48,8 +47,6 @@ public class CraftController {
         if(ingredientItem != null) quantity = ingredientItem.getQuantity();
         if(CraftService.checkEnoughIngredients(quantity,vc.getNeccesaryQuantity(),craftQuantity,vc.getIngredientName(),vc.getCraftItemName())){
 
-
-
             if (Stream.of(1).anyMatch(x -> x == vc.getId())) {
                 UsableItem craftedItem = sp.findByNameMultiply(vc.getCraftItemName());
                 craftedItem.setQuantity(craftQuantity);
@@ -67,7 +64,6 @@ public class CraftController {
                 craftedItem.setQuantity(craftQuantity);
                 CraftService.crafting(player, vc.getNeccesaryQuantity() * craftQuantity,craftedItem , ingredientItem, craftQuantity);
             }
-
 
         }
 
