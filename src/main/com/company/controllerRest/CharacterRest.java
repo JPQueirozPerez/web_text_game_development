@@ -36,6 +36,7 @@ public class CharacterRest {
     public Iterable<Character> listarChar(){
         return  repositoryChar.findAllChar();
     }
+
     @GetMapping("/listPlayer")
     public Iterable<Player> listarPlayer(){
         return  repositoryChar.findAllPlayer();
