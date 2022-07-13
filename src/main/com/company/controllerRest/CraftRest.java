@@ -1,6 +1,5 @@
 package main.com.company.controllerRest;
 
-import main.com.company.model.Character;
 import main.com.company.model.ValuesCraftController;
 import main.com.company.repository.RepositoryValuesCraftController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ public class CraftRest {
     RepositoryValuesCraftController repoCraft;
 
     @GetMapping("/listCraft")
-    public Iterable<ValuesCraftController> listarChar(){
-        return  repoCraft.findAllById();
+    public Iterable<ValuesCraftController> listCraft(){
+        return  repoCraft.findAll();
     }
 }

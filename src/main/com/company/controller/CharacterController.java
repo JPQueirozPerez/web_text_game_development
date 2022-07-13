@@ -49,11 +49,11 @@ public class CharacterController {
         NPC npc =  sc.findbyChoise(value);
 
         if(npc.getCharClass().equals("beast")){
-            Item fur = new Item("Fur", "material", "The fur of an wild animal", 1, 1);
+            Item fur = new Item("Fur", "material", "The fur of an wild animal", 1, 1,19);
             npc.setTreasure(fur);
             return npc;
         }else if(npc.getCharClass().equals("golem")){
-            Item clay = new Item("Clay", "material", "A handful of clay", 1, 1);
+            Item clay = new Item("Clay", "material", "A handful of clay", 1, 1,20);
             npc.setTreasure(clay);
             return npc;
         }

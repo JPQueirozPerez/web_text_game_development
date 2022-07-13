@@ -21,8 +21,6 @@ public class InventoryService {
 
     private  static ServiceItemJPA sp;
 
-
-
     @PostConstruct
     public void init(){
         this.sp = serviceEitem;
@@ -31,20 +29,9 @@ public class InventoryService {
 
 
    public static Item createItem() {
-        int value = new Random().nextInt(1, 7);
+        int value = new Random().nextInt(1, 20);
         //the value 5-6 provide the error
-        EquippableItem eitem =  sp.findbyChoiseEquippable(value);
-
-        if(eitem.getChoise() != 8){
-
-            Item item2 = eitem;
-
-            return  item2;
-        }
-
-       UsableItem usableItem = sp.findbyChoiseUsable(value);
-       Item item1 = usableItem;
-        return item1;
+        return sp.findByChoiseMultiply(value);
     }
 
     public static boolean compareItems(List<Item> items, Item newItemToAdd) {
