@@ -3,6 +3,7 @@ package main.com.company;
 import main.com.company.model.*;
 import main.com.company.repository.RepositoryChar;
 import main.com.company.repository.RepositoryItem;
+import main.com.company.repository.RepositoryValuesCraftController;
 import main.com.company.view.IOView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +24,10 @@ public class DemoApplication {
 	@Autowired
 	static RepositoryChar repoChar;
 	@Autowired
-
 	static RepositoryItem repoitem;
+
+	@Autowired
+	static RepositoryValuesCraftController repoCraft;
 
 
 
@@ -35,7 +38,7 @@ public class DemoApplication {
 	public static void main(String[] args)  {
 
 		SpringApplication.run(DemoApplication.class, args);
-		save(repoChar,repoitem);
+		save(repoChar,repoitem,repoCraft);
 		IOView.mainLoopView();
 
 
@@ -45,7 +48,7 @@ public class DemoApplication {
 	}
 	@Bean
 
-	public  static CommandLineRunner save(RepositoryChar repoc,RepositoryItem repoitem)  {
+	public  static CommandLineRunner save(RepositoryChar repoc,RepositoryItem repoitem, RepositoryValuesCraftController repoCraft )  {
 
 		return args -> {
 			List<Item> items = new ArrayList<>();
@@ -141,6 +144,28 @@ public class DemoApplication {
 			repoc.save(enemy10);
 			repoc.save(enemy11);
 
+
+
+			ValuesCraftController v1 = new ValuesCraftController(1,"Healing herb",5,"Health potion");
+			ValuesCraftController v2 = new ValuesCraftController(2,"Clay",10,"Golem arm");
+			ValuesCraftController v3 = new ValuesCraftController(3,"Clay",10,"Golem leg");
+			ValuesCraftController v4 = new ValuesCraftController(4,"Clay",10,"Golem head");
+			ValuesCraftController v5 = new ValuesCraftController(5,"Clay",20,"Golem body");
+			ValuesCraftController v6 = new ValuesCraftController(6,"Fur",1,"Leather");
+			ValuesCraftController v7 = new ValuesCraftController(7,"Leather",3,"Leather helmet");
+			ValuesCraftController v8 = new ValuesCraftController(8,"Leather",4,"Leather gloves");
+			ValuesCraftController v9 = new ValuesCraftController(9,"Leather",4,"Leather boots");
+			ValuesCraftController v10 = new ValuesCraftController(10,"Leather",7,"Leather armour");
+			repoCraft.save(v1);
+			repoCraft.save(v2);
+			repoCraft.save(v3);
+			repoCraft.save(v4);
+			repoCraft.save(v5);
+			repoCraft.save(v6);
+			repoCraft.save(v7);
+			repoCraft.save(v8);
+			repoCraft.save(v9);
+			repoCraft.save(v10);
 
 
 

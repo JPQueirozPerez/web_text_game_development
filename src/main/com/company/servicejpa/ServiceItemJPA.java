@@ -58,7 +58,7 @@ public class ServiceItemJPA {
     }
 
     public void deleteByName(String name){
-        Optional<Item> item = repoeitem.findByName(name);
+        Optional<Item> item = repoei.findByName(name);
         if (item.get()==null) {
             throw new Exceptions("Item not found", HttpStatus.NOT_FOUND);
         }
@@ -67,7 +67,7 @@ public class ServiceItemJPA {
     }
 
     public Item update(String name,Item item){
-        Optional<Item> item2 = repoeitem.findByName(name);
+        Optional<Item> item2 = repoei.findByName(name);
         Item item3 = item2.get();
         if(item3!=null){
 //            the wishes of the front-end
