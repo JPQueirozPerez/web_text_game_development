@@ -20,18 +20,20 @@ public class EquippableItem extends Item{
             speed,
             strength,
             choice;
+    String place;
 
 
-    public EquippableItem(String name, String type, String description, int price, int quantity, int dexterity, int charisma, int defense, int speed, int strength) {
+    public EquippableItem(String name, String type, String description, int price, int quantity, int dexterity, int charisma, int defense, int speed, int strength, String place) {
         super(name, type, description, price, quantity);
         this.dexterity = dexterity;
         this.charisma = charisma;
         this.defense = defense;
         this.speed = speed;
         this.strength = strength;
+        this.place = place;
     }
 
-    public EquippableItem(String name, String type, String description, int price, int quantity, int dexterity, int charisma, int defense, int speed, int strength, int choice) {
+    public EquippableItem(String name, String type, String description, int price, int quantity, int dexterity, int charisma, int defense, int speed, int strength, int choice, String place) {
         super(name, type, description, price, quantity);
         this.dexterity = dexterity;
         this.charisma = charisma;
@@ -39,6 +41,7 @@ public class EquippableItem extends Item{
         this.speed = speed;
         this.strength = strength;
         this.choice = choice;
+        this.place = place;
     }
 
 }
