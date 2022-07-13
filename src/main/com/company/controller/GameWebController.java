@@ -68,7 +68,7 @@ public class GameWebController {
     }
 
     @RequestMapping("/inventory")
-    public String inventory(Model playerFromController) { //TODO problem with initial capacity of inventory (the capacity isn't set in CharacterController)
+    public String inventory(Model playerFromController) {
         playerFromController.getAttribute("player");
         return "inventory";
     }
@@ -112,13 +112,35 @@ public class GameWebController {
         return "redirect:fight";
     }
 
-    @RequestMapping("/shop")
-    public String shop(Model playerFromController, Model shopInventoryFromController){ //TODO problem with instanceOf
+    @RequestMapping("/shopInventory")
+    public String shopInventory(Model shopInventoryFromController){
         Inventory inventory = ShopController.createShopInventory();
         shopInventoryFromController.addAttribute("shopInventory", inventory);
+        return "shop";
+    }
+
+
+    @RequestMapping("/shop")
+    public String shop(Model playerFromController, Model shopInventoryFromController){ //TODO problem with instanceOf
         Inventory shopInventory = (Inventory) shopInventoryFromController.getAttribute("shopInventory");
         Player player = (Player) playerFromController.getAttribute("player");
         return "shop"; //TODO Shop inventory only having 100 items and not 200
+    }
+
+    @RequestMapping("/buy")
+    public String buy(Model playerFromController, Model shopInventoryFromController, @RequestParam("option") int option){
+        Inventory shopInventory = (Inventory) shopInventoryFromController.getAttribute("shopInventory");
+        Player player = (Player) playerFromController.getAttribute("player");
+        ShopService.shopping(1, shopInventory, option, player, 1);
+        return "redirect:shop";
+    }
+
+    @RequestMapping("/sell")
+    public String sell(Model playerFromController, Model shopInventoryFromController, @RequestParam("option") int option){
+        Inventory shopInventory = (Inventory) shopInventoryFromController.getAttribute("shopInventory");
+        Player player = (Player) playerFromController.getAttribute("player");
+        ShopService.shopping(2, shopInventory, option, player, 1);
+        return "redirect:shop";
     }
 
     @RequestMapping("/underConstruction")

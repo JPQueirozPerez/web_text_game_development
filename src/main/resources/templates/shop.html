@@ -17,20 +17,22 @@
     </ul>
 </header>
 <main>
-    <span th:object="${player}">
+    <span th:object="${player}" th:with="countStat=${0}">
     <h1><span th:text="*{name}"></span>'s Inventory</h1>
-    <h1 th:text="*{inventory.capacity}"></h1>
     <table>
         <tr class="inventoryHead">
+            <th>Index</th>
             <th>Item</th>
             <th>Description</th>
             <th>Quantity</th>
             <th>Price</th>
+            <th>Sell</th>
             <th>Defense</th>
             <th>Speed</th>
             <th>Strength</th>
         </tr>
-        <tr th:each="item: *{inventory.items}">
+        <tr th:each="item, countStat: *{inventory.items}">
+            <td th:text="${item.index}"/>
             <td th:text="${item.name}"/>
             <td th:text="${item.description}"/>
             <td>x<span th:text="${item.quantity}"/></td>
@@ -40,24 +42,27 @@
 <!--            <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>-->
 <!--            <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>-->
 <!--            </span>-->
+            <td> <a th:href="@{/game/sell(option=${countStat.index})}"> <button type="button" class="button">Sell <span th:text="${item.name}"/></button> </a></td>
         </tr>
     </table>
         </span>
 
-    <span th:object="${shopInventory}">
+    <span th:object="${shopInventory}" th:with="countStat=${0}">
         <h1>Shop's Inventory </h1>
-                        <h1 th:text="*{capacity}"></h1>
         <table>
             <tr class="inventoryHead">
+                <th>Index</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Quantity</th>
                 <th>Price</th>
+                <th>Buy</th>
                 <th>Defense</th>
                 <th>Speed</th>
                 <th>Strength</th>
             </tr>
-            <tr th:each="item: *{items}">
+            <tr th:each="item, countStat: *{items}">
+                <td th:text="${item.index}"/>
                 <td th:text="${item.name}"/>
                 <td th:text="${item.description}"/>
                 <td>x<span th:text="${item.quantity}"/></td>
@@ -67,6 +72,7 @@
 <!--                <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>-->
 <!--                <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>-->
 <!--                </span>-->
+                <td> <a th:href="@{/game/buy(option=${countStat.index})}"><button type="button" class="button">Buy <span th:text="${item.name}"/></button></a></td>
             </tr>
         </table>
         </span>

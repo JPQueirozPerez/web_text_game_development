@@ -1,5 +1,6 @@
 package main.com.company.service;
 
+import main.com.company.controller.InventoryController;
 import main.com.company.model.*;
 import main.com.company.view.FightView;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class CharacterService {
     // Polimorfismo
     public static Player createPlayer(List<Item> items, Item newItem, Player player, Inventory playerInventory) {
         items.add(newItem);
-        player.getInventory().setItems(items);
+        playerInventory.setItems(items);
         playerInventory.setCapacity(playerInventory.getCapacity() - 1);
         return player;
     }
