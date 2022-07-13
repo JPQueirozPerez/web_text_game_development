@@ -3,7 +3,6 @@ package main.com.company.servicejpa;
 import main.com.company.model.*;
 import main.com.company.repository.RepositoryItem;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -15,19 +14,19 @@ import java.util.Optional;
 public class ServiceItemJPA {
 
     @Autowired
-    private RepositoryItem repoeitem;
+    private RepositoryItem repoitem;
 
 
 
-    private static RepositoryItem repoei;
+    private static RepositoryItem repoi;
 
     @PostConstruct
     public void init(){
-        this.repoei = repoeitem;
+        this.repoi = repoitem;
 
     }
     public EquippableItem findbyChoice(int choice){
-        Optional<EquippableItem> o = repoei.findByChoice(choice);
+        Optional<EquippableItem> o = repoi.findByChoice(choice);
         EquippableItem n = o.get();
         return n;
     }
@@ -45,7 +44,7 @@ public class ServiceItemJPA {
 //    }
 //
     public <T> T findByNameMultiply(String name){
-        Optional<Object> o = repoei.findByNameMultiply(name);
+        Optional<Object> o = repoi.findByNameMultiply(name);
         if (o.get() instanceof Item){
             return (T) o.get();
         }
@@ -59,26 +58,26 @@ public class ServiceItemJPA {
     }
 
     public Item getItem(Player p ){
-        Optional<Item>  i = repoei.findByName(p.getNameItem());
+        Optional<Item>  i = repoi.findByName(p.getNameItem());
         return i.get();
 
     }
 
 //    public void deleteByName(String name){
-//        Optional<Item> item = repoei.findByName(name);
+//        Optional<Item> item = repoi.findByName(name);
 //        if (item.get()==null) {
 //            throw new Exceptions("Item not found", HttpStatus.NOT_FOUND);
 //        }
 //
-//        repoeitem.delete(item.get());
+//        repoitem.delete(item.get());
 //    }
 
     public Item update(String name,Item item){
-        Optional<Item> item2 = repoei.findByName(name);
+        Optional<Item> item2 = repoi.findByName(name);
         Item item3 = item2.get();
         if(item3!=null){
 //            the wishes of the front-end
-            return repoeitem.save(item3);
+            return repoitem.save(item3);
         }
         return null;
 

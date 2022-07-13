@@ -2,7 +2,6 @@ package main.com.company.model;
 
 import lombok.*;
 import org.hibernate.annotations.Proxy;
-import org.hibernate.engine.spi.Status;
 
 import javax.persistence.*;
 

@@ -7,18 +7,14 @@ import main.com.company.repository.Repositoryequipment;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ServiceEquipment {
+public class ServiceEquipmentJPA {
 
    private final  Repositoryequipment repoequipment;
 
-
-    public ServiceEquipment(Repositoryequipment repoequipment) {
+    public ServiceEquipmentJPA(Repositoryequipment repoequipment) {
         this.repoequipment = repoequipment;
 
     }
-
-
-
 
 
     public Equipment createEquipment2(Equipment e){

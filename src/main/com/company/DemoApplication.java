@@ -29,11 +29,8 @@ public class DemoApplication {
 	@Autowired
 	static RepositoryItem repoitem;
 
-	@Autowired
-	static RepositoryValuesCraftController repoCraft;
-
-
-
+//	@Autowired
+//	static RepositoryValuesCraftController repoCraft;
 
 
 	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
@@ -42,11 +39,13 @@ public class DemoApplication {
 	public static void main(String[] args)  {
 
 		SpringApplication.run(DemoApplication.class, args);
-		save(repoChar,repoitem,repoCraft); //TODO resolve problem with 'entityManagerFactory'
+//		save(repoChar,repoitem,repoCraft); //TODO resolve problem with 'entityManagerFactory'
+		save(repoChar,repoitem);
 		IOView.mainLoopView();
 	}
 	@Bean
-	public static CommandLineRunner save(RepositoryChar repoc,RepositoryItem repoitem, RepositoryValuesCraftController repocraft)  {
+//	public static CommandLineRunner save(RepositoryChar repoc,RepositoryItem repoitem, RepositoryValuesCraftController repocraft)  {
+	public static CommandLineRunner save(RepositoryChar repoc,RepositoryItem repoitem)  {
 
 		return args -> {
 			List<Item> items = new ArrayList<>();
@@ -117,26 +116,26 @@ public class DemoApplication {
 			repoitem.save(craftedItem9);
 			repoitem.save(craftedItem10);
 
-			ValuesCraftController craftRecipe1 = new ValuesCraftController(5,"Health potion","Healing herb");
-			ValuesCraftController craftRecipe2 = new ValuesCraftController( 10,"Golem arm","Clay");
-			ValuesCraftController craftRecipe3 = new ValuesCraftController(10,"Golem leg","Clay");
-			ValuesCraftController craftRecipe4 = new ValuesCraftController(10,"Golem head","Clay");
-			ValuesCraftController craftRecipe5 = new ValuesCraftController(20,"Golem body","Clay");
-			ValuesCraftController craftRecipe6 = new ValuesCraftController(1,"Leather","Fur");
-			ValuesCraftController craftRecipe7 = new ValuesCraftController(3,"Leather helmet","Leather");
-			ValuesCraftController craftRecipe8 = new ValuesCraftController(4,"Leather gloves","Leather");
-			ValuesCraftController craftRecipe9 = new ValuesCraftController(4,"Leather boots","Leather");
-			ValuesCraftController craftRecipe10 = new ValuesCraftController(7,"Leather armour","Leather");
-			repocraft.save(craftRecipe1);
-			repocraft.save(craftRecipe2);
-			repocraft.save(craftRecipe3);
-			repocraft.save(craftRecipe4);
-			repocraft.save(craftRecipe5);
-			repocraft.save(craftRecipe6);
-			repocraft.save(craftRecipe7);
-			repocraft.save(craftRecipe8);
-			repocraft.save(craftRecipe9);
-			repocraft.save(craftRecipe10);
+//			ValuesCraftController craftRecipe1 = new ValuesCraftController(5,"Health potion","Healing herb");
+//			ValuesCraftController craftRecipe2 = new ValuesCraftController( 10,"Golem arm","Clay");
+//			ValuesCraftController craftRecipe3 = new ValuesCraftController(10,"Golem leg","Clay");
+//			ValuesCraftController craftRecipe4 = new ValuesCraftController(10,"Golem head","Clay");
+//			ValuesCraftController craftRecipe5 = new ValuesCraftController(20,"Golem body","Clay");
+//			ValuesCraftController craftRecipe6 = new ValuesCraftController(1,"Leather","Fur");
+//			ValuesCraftController craftRecipe7 = new ValuesCraftController(3,"Leather helmet","Leather");
+//			ValuesCraftController craftRecipe8 = new ValuesCraftController(4,"Leather gloves","Leather");
+//			ValuesCraftController craftRecipe9 = new ValuesCraftController(4,"Leather boots","Leather");
+//			ValuesCraftController craftRecipe10 = new ValuesCraftController(7,"Leather armour","Leather");
+//			repocraft.save(craftRecipe1);
+//			repocraft.save(craftRecipe2);
+//			repocraft.save(craftRecipe3);
+//			repocraft.save(craftRecipe4);
+//			repocraft.save(craftRecipe5);
+//			repocraft.save(craftRecipe6);
+//			repocraft.save(craftRecipe7);
+//			repocraft.save(craftRecipe8);
+//			repocraft.save(craftRecipe9);
+//			repocraft.save(craftRecipe10);
 
 
 			Item fur = new Item("Fur", "material", "The fur of an wild animal", 1, 1);

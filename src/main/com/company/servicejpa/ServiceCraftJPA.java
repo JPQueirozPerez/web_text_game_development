@@ -1,9 +1,6 @@
 package main.com.company.servicejpa;
 
-import main.com.company.model.EquippableItem;
-import main.com.company.model.Player;
 import main.com.company.model.ValuesCraftController;
-import main.com.company.repository.RepositoryItem;
 import main.com.company.repository.RepositoryValuesCraftController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.Optional;
 @Service
-public class ServiceCraftController {
+public class ServiceCraftJPA {
 
 
     @Autowired

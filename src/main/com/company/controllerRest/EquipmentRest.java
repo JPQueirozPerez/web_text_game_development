@@ -2,19 +2,16 @@ package main.com.company.controllerRest;
 
 
 import main.com.company.model.Equipment;
-import main.com.company.model.EquippableItem;
-import main.com.company.model.Item;
-import main.com.company.servicejpa.ServiceEquipment;
+import main.com.company.servicejpa.ServiceEquipmentJPA;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/equipment")
 public class EquipmentRest {
     @Autowired
-    ServiceEquipment serveequipment;
+    ServiceEquipmentJPA serveequipment;
 
     @PostMapping("/addE")
     public Equipment saveE(@RequestBody Equipment e){
