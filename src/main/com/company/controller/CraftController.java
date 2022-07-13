@@ -10,6 +10,7 @@ import main.com.company.servicejpa.ServiceCraftController;
 import main.com.company.servicejpa.ServiceItemJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.CheckForNull;
 import javax.annotation.PostConstruct;
@@ -37,6 +38,7 @@ public class CraftController {
         this.sp = serviceEitem;
 
     }
+
 
 
     public static void crafting(Player player, int value, int craftQuantity) {

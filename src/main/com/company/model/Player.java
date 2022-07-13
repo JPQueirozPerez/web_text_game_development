@@ -23,7 +23,7 @@ public class Player extends Character {
 //    @OnDelete( action = OnDeleteAction.NO_ACTION )
     private Inventory inventory;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "equipment_fk")
 //    @OnDelete( action = OnDeleteAction.NO_ACTION )
     private Equipment equipment;

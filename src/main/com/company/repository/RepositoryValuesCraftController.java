@@ -12,4 +12,7 @@ public interface RepositoryValuesCraftController extends CrudRepository<ValuesCr
 
     @Query("select x from ValuesCraftController x where x.id = ?1")
     public Optional<ValuesCraftController> findById(int id);
+
+    @Query("select x from ValuesCraftController x where x.id is not null ")
+    public Iterable<ValuesCraftController> findAllById();
 }
