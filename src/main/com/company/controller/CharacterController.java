@@ -39,7 +39,7 @@ public class CharacterController {
 
         Player p1 = sc.findBycharClass(name,charClass);
         Item item = si.getItem(p1);
-        Player p2  = CharacterService.createPlayer(new ArrayList<>(), item,p1,new Inventory(10, new ArrayList<>()));
+        Player p2  = CharacterService.createPlayer(new ArrayList<>(), item,p1,new Inventory(20, new ArrayList<>()));
         return p2;
     }
 

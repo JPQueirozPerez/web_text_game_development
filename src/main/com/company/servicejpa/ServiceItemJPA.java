@@ -1,9 +1,6 @@
 package main.com.company.servicejpa;
 
-import main.com.company.model.EquippableItem;
-import main.com.company.model.Exceptions;
-import main.com.company.model.Item;
-import main.com.company.model.Player;
+import main.com.company.model.*;
 import main.com.company.repository.RepositoryItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,9 +25,15 @@ public class ServiceItemJPA {
 
     }
 ///
-    public EquippableItem findbyChoise(int choise){
-        Optional<EquippableItem> o = repoei.findByChoise(choise);
+    public EquippableItem findbyChoiseEquippable(int choise){
+        Optional<EquippableItem> o = repoei.findByChoiseEquippable(choise);
         EquippableItem n = o.get();
+        return n;
+    }
+
+    public UsableItem findbyChoiseUsable(int choise){
+        Optional<UsableItem> o = repoei.findByChoiseUsable(choise);
+        UsableItem n = o.get();
         return n;
     }
 
