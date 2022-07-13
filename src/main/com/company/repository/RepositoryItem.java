@@ -25,6 +25,9 @@ public interface RepositoryItem extends JpaRepository<Item,Integer> {
     @Query("select x from UsableItem x where x.choise = ?1")
     public Optional<UsableItem> findByChoiseUsable(int choise);
 
+    @Query("select x,p,m from Item x, UsableItem p, EquippableItem m where x.name = ?1 or p.name =?1 or m.name = ?1")
+    public Optional<Object> findByNameMultiply(String name);
+
 
     @Query("delete from Item i where i.name = ?1")
     public Optional<Item> deleteByName(String name);

@@ -37,6 +37,20 @@ public class ServiceItemJPA {
         return n;
     }
 
+    public <T> T findByNameMultiply(String name){
+        Optional<Object> o = repoei.findByNameMultiply(name);
+        if (o.get() instanceof Item){
+            return (T) o.get();
+        }
+        if (o.get() instanceof EquippableItem){
+            return (T) o.get();
+        }
+        if (o.get() instanceof UsableItem){
+            return (T) o.get();
+        }
+        return null ;
+    }
+
     public Item getItem(Player p ){
         Optional<Item>  i = repoei.findByName(p.getNameItem());
         return i.get();

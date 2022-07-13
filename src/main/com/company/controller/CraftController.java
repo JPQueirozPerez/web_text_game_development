@@ -6,10 +6,29 @@ import main.com.company.model.Player;
 import main.com.company.model.UsableItem;
 import main.com.company.service.CraftService;
 import main.com.company.service.InventoryService;
+import main.com.company.servicejpa.ServiceItemJPA;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
-
+@Controller
 public class CraftController {
+
+
+    @Autowired
+    private ServiceItemJPA serviceEitem;
+
+    private  static ServiceItemJPA sp;
+
+
+
+    @PostConstruct
+    public void init(){
+        this.sp = serviceEitem;
+
+    }
+
 
     public static void crafting(Player player, int value, int craftQuantity) {
         List<Item> inventory = player.getInventory().getItems();
@@ -24,7 +43,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,5,craftQuantity,ingredientName,"Health potion")){
-                    UsableItem craftedItem = new UsableItem("Health potion", "Potion", "A potion with medicinal capabilities",5,craftQuantity,"healing",10);
+                    UsableItem craftedItem = sp.findByNameMultiply("Health potion");
                     CraftService.crafting(player, 5 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -34,7 +53,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,10,craftQuantity,ingredientName,"Golem arm")) {
-                    Item craftedItem = new Item("Golem arm", "Constructor", "The arm of a Golem", 20, craftQuantity);
+                    Item craftedItem = sp.findByNameMultiply("Golem arm");
                     CraftService.crafting(player, 10 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -44,7 +63,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,10,craftQuantity,ingredientName,"Golem leg")) {
-                    Item craftedItem = new Item("Golem leg", "Constructor", "The leg of a Golem", 20, craftQuantity);
+                    Item craftedItem = sp.findByNameMultiply("Golem leg");
                     CraftService.crafting(player, 10 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -54,7 +73,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,10,craftQuantity,ingredientName,"Golem head")) {
-                    Item craftedItem = new Item("Golem head", "Constructor", "The head of a Golem", 20, craftQuantity);
+                    Item craftedItem = sp.findByNameMultiply("Golem head");
                     CraftService.crafting(player, 10 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -64,7 +83,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,20,craftQuantity,ingredientName,"Golem body")) {
-                    Item craftedItem = new Item("Golem body", "Constructor", "The body of a Golem", 40, craftQuantity);
+                    Item craftedItem = sp.findByNameMultiply("Golem body");
                     CraftService.crafting(player, 20 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -74,7 +93,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,1,craftQuantity,ingredientName,"Leather")) {
-                    Item craftedItem = new Item("Leather",  "Material", "A piece of leather", 2, craftQuantity);
+                    Item craftedItem = sp.findByNameMultiply("Leather");
                     CraftService.crafting(player,craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -84,7 +103,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,3,craftQuantity,ingredientName,"Leather helmet")) {
-                    EquippableItem craftedItem = new EquippableItem("Leather helmet", "armour", "A basic helmet made of leather", 4, craftQuantity,0,0,2,0,0);
+                    EquippableItem craftedItem = sp.findByNameMultiply("Leather helmet");
                     CraftService.crafting(player, 3 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -94,7 +113,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,4,craftQuantity,ingredientName,"Leather gloves")) {
-                    EquippableItem craftedItem = new EquippableItem("Leather gloves", "armour", "A basic pair of gloves made of leather", 4, craftQuantity,0,0,2,0,0);
+                    EquippableItem craftedItem = sp.findByNameMultiply("Leather gloves");
                     CraftService.crafting(player, 4 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -104,7 +123,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,4,craftQuantity,ingredientName,"Leather boots")) {
-                    EquippableItem craftedItem = new EquippableItem("Leather boots", "armour", "A basic pair of boots made of leather", 4, craftQuantity,0,0,2,0,0);
+                    EquippableItem craftedItem = sp.findByNameMultiply("Leather boots");
                     CraftService.crafting(player, 4 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
@@ -114,7 +133,7 @@ public class CraftController {
                 ingredientItem = InventoryService.searchItemByName(inventory,ingredientName);
                 if(ingredientItem != null) quantity = ingredientItem.getQuantity();
                 if(CraftService.checkEnoughIngredients(quantity,7,craftQuantity,ingredientName,"Leather armour")) {
-                    EquippableItem craftedItem = new EquippableItem("Leather armour", "armour", "A basic armour made of leather", 6, craftQuantity,0,0,4,0,0);
+                    EquippableItem craftedItem = sp.findByNameMultiply("Leather armour");
                     CraftService.crafting(player, 7 * craftQuantity, craftedItem, ingredientItem, craftQuantity);
                 }
                 break;
