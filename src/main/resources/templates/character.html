@@ -55,6 +55,17 @@
             <th>Speed</th>
             <th>Strength</th>
         </tr>
+        <tr> <td><span><strong>Head</strong></span></td>
+            <span  th:each="item:${player.equipment.equipments}">
+                <span th:if="${item.place=='head'}">
+                        <td th:text="${item.name}"></td>
+                        <td th:text="${item.description}"></td>
+                        <td><span th:if="${item.defense > 0}">+</span><span th:text="${item.defense}"></span></td>
+                        <td><span th:if="${item.speed > 0}">+</span><span th:text="${item.speed}"></span></td>
+                        <td><span th:if="${item.strength > 0}">+</span><span th:text="${item.strength}"></span></td>
+                </span>
+            </span>
+        </tr>
         <tr>
             <td><span><strong>Body</strong></span></td>
             <span  th:each="item:${player.equipment.equipments}">
@@ -64,17 +75,6 @@
                     <td><span th:if="${item.defense > 0}">+</span><span th:text="${item.defense}"></span></td>
                     <td><span th:if="${item.speed > 0}">+</span><span th:text="${item.speed}"></span></td>
                     <td><span th:if="${item.strength > 0}">+</span><span th:text="${item.strength}"></span></td>
-                </span>
-            </span>
-        </tr>
-        <tr> <td><span><strong>Head</strong></span></td>
-            <span  th:each="item:${player.equipment.equipments}">
-                <span th:if="${item.place=='head'}">
-                        <td th:text="${item.name}"></td>
-                        <td th:text="${item.description}"></td>
-                        <td><span th:if="${item.defense > 0}">+</span><span th:text="${item.defense}"></span></td>
-                        <td><span th:if="${item.speed > 0}">+</span><span th:text="${item.speed}"></span></td>
-                        <td><span th:if="${item.strength > 0}">+</span><span th:text="${item.strength}"></span></td>
                 </span>
             </span>
         </tr>
@@ -111,16 +111,16 @@
                 </span>
             </span>
         </tr>
-<!--        <tr><td><span><strong>Left weapon</strong></span></td>-->
-<!--            <span  th:each="item:${player.equipment.equipments}">-->
-<!--            <span th:if="${item.place=='weapon' and !player.equipment.weapon1}">-->
-<!--                <td th:text="${item.name}"></td>-->
-<!--                <td th:text="${item.description}"></td>-->
-<!--                <td><span th:if="${item.defense > 0}">+</span><span th:text="${item.defense}"></span></td>-->
-<!--                <td><span th:if="${item.speed > 0}">+</span><span th:text="${item.speed}"></span></td>-->
-<!--                <td><span th:if="${item.strength > 0}">+</span><span th:text="${item.strength}"></span></td>-->
-<!--            </span></span>-->
-<!--        </tr>-->
+        <!--        <tr><td><span><strong>Left weapon</strong></span></td>-->
+        <!--            <span  th:each="item:${player.equipment.equipments}">-->
+        <!--            <span th:if="${item.place=='weapon' and !player.equipment.weapon1}">-->
+        <!--                <td th:text="${item.name}"></td>-->
+        <!--                <td th:text="${item.description}"></td>-->
+        <!--                <td><span th:if="${item.defense > 0}">+</span><span th:text="${item.defense}"></span></td>-->
+        <!--                <td><span th:if="${item.speed > 0}">+</span><span th:text="${item.speed}"></span></td>-->
+        <!--                <td><span th:if="${item.strength > 0}">+</span><span th:text="${item.strength}"></span></td>-->
+        <!--            </span></span>-->
+        <!--        </tr>-->
     </table>
     <a href="" onclick="history.back();">BACK</a>
 </main>
