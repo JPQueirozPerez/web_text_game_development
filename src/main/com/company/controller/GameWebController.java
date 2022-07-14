@@ -66,8 +66,7 @@ public class GameWebController {
     }
 
     @RequestMapping("/mainGame")
-    public String mainGame(Model playerFromController) {
-//        Player player = (Player) playerFromController.getAttribute("player");
+    public String mainGame() {
         return "game";
     }
 

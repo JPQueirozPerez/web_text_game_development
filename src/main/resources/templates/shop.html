@@ -35,12 +35,12 @@
             <td th:text="${item.description}"/>
             <td>x<span th:text="${item.quantity}"/></td>
             <td>x<span th:text="${item.price}"/></td>
-<!--             <span th:if="${item instanceof T(EquipableItem)}">-->
-<!--                    <td th:text="${item.defense > 0} ? '+' + ${item.defense} : ${item.defense}"/>-->
-<!--                    <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>-->
-<!--                    <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>-->
-<!--             </span>-->
             <td> <a th:href="@{/game/sell(option=${countStat.index})}"> <button type="button" class="button">Sell <span th:text="${item.name}"/></button> </a></td>
+             <span th:if="${item.class.name == 'EquippableItem'}" >
+                <td th:text="${item.defense > 0} ? '+' + ${item.defense} : ${item.defense}"/>
+                <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>
+                <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>
+           </span>
         </tr>
     </table>
         </span>
@@ -63,12 +63,12 @@
                 <td th:text="${item.description}"/>
                 <td>x<span th:text="${item.quantity}"/></td>
                 <td>x<span th:text="${item.price}"/></td>
-<!--                 <span th:if="${item instanceof T(EquipableItem)}">-->
-<!--                    <td th:text="${item.defense > 0} ? '+' + ${item.defense} : ${item.defense}"/>-->
-<!--                    <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>-->
-<!--                    <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>-->
-<!--                </span>-->
                 <td> <a th:href="@{/game/buy(option=${countStat.index})}"><button type="button" class="button">Buy <span th:text="${item.name}"/></button></a></td>
+                 <span th:if="${item.class.name == 'EquippableItem'}">
+                    <td th:text="${item.defense > 0} ? '+' + ${item.defense} : ${item.defense}"/>
+                    <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>
+                    <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>
+                </span>
             </tr>
         </table>
         </span>
