@@ -3,6 +3,7 @@ package main.com.company;
 import main.com.company.model.*;
 import main.com.company.repository.RepositoryChar;
 import main.com.company.repository.RepositoryItem;
+import main.com.company.repository.RepositoryValuesCraftController;
 import main.com.company.view.IOView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +29,9 @@ public class DemoApplication {
 	@Autowired
 	static RepositoryItem repoitem;
 
+	@Autowired
+	static RepositoryValuesCraftController repoCraft;
+
 
 
 
@@ -38,12 +42,12 @@ public class DemoApplication {
 	public static void main(String[] args)  {
 
 		SpringApplication.run(DemoApplication.class, args);
-		save(repoChar,repoitem);
+		save(repoChar,repoitem,repoCraft);
 		IOView.mainLoopView();
 	}
 	@Bean
 
-	public  static CommandLineRunner save(RepositoryChar repoc,RepositoryItem repoitem)  {
+	public  static CommandLineRunner save(RepositoryChar repoc,RepositoryItem repoitem, RepositoryValuesCraftController repoCraft )  {
 
 		return args -> {
 			List<Item> items = new ArrayList<>();
@@ -85,15 +89,17 @@ public class DemoApplication {
 			UsableItem usableItem = new UsableItem("Healing herb", "herb", "This herb has medicinal capabilities", 1, 1, "healing", 3,8);
 
 			UsableItem craftedItem1 = new UsableItem("Health potion", "Potion", "A potion with medicinal capabilities",5,0,"healing",10);
-			Item craftedItem2 = new Item("Golem arm", "Constructor", "The arm of a Golem", 20, 0);
-			Item craftedItem3 = new Item("Golem leg", "Constructor", "The leg of a Golem", 20, 0);
-			Item craftedItem4 = new Item("Golem head", "Constructor", "The head of a Golem", 20, 0);
-			Item craftedItem5 = new Item("Golem body", "Constructor", "The body of a Golem", 40, 0);
-			Item craftedItem6 = new Item("Leather",  "Material", "A piece of leather", 2, 0);
-			EquippableItem craftedItem7 = new EquippableItem("Leather helmet", "armour", "A basic helmet made of leather", 4, 0,0,0,2,0,0,"head");
-			EquippableItem craftedItem8 = new EquippableItem("Leather gloves", "armour", "A basic pair of gloves made of leather", 4, 0,0,0,2,0,0,"arms");
-			EquippableItem craftedItem9 = new EquippableItem("Leather boots", "armour", "A basic pair of boots made of leather", 4, 0,0,0,2,0,0,"legs");
-			EquippableItem craftedItem10 = new EquippableItem("Leather armour", "armour", "A basic armour made of leather", 6, 0,0,0,4,0,0,"body");
+			Item craftedItem2 = new Item("Golem arm", "Constructor", "The arm of a Golem", 20, 0, 14);
+			Item craftedItem3 = new Item("Golem leg", "Constructor", "The leg of a Golem", 20, 0, 15);
+			Item craftedItem4 = new Item("Golem head", "Constructor", "The head of a Golem", 20, 0,16);
+			Item craftedItem5 = new Item("Golem body", "Constructor", "The body of a Golem", 40, 0,17);
+			Item craftedItem6 = new Item("Leather",  "Material", "A piece of leather", 2, 0,18);
+			Item fur = new Item("Fur", "material", "The fur of an wild animal", 1, 1,19);
+			Item clay = new Item("Clay", "material", "A handful of clay", 1, 1,20);
+			EquippableItem craftedItem7 = new EquippableItem("Leather helmet", "armour", "A basic helmet made of leather", 4, 0,0,0,2,0,0, 9,"head");
+			EquippableItem craftedItem8 = new EquippableItem("Leather gloves", "armour", "A basic pair of gloves made of leather", 4, 0,0,0,2,0,0, 11,"arms");
+			EquippableItem craftedItem9 = new EquippableItem("Leather boots", "armour", "A basic pair of boots made of leather", 4, 0,0,0,2,0,0,12,"legs");
+			EquippableItem craftedItem10 = new EquippableItem("Leather armour", "armour", "A basic armour made of leather", 6, 0,0,0,4,0,0,13,"body");
 			repoitem.save(reward1);
 			repoitem.save(reward2);
 			repoitem.save(newItem2);
@@ -113,10 +119,8 @@ public class DemoApplication {
 			repoitem.save(craftedItem8);
 			repoitem.save(craftedItem9);
 			repoitem.save(craftedItem10);
-
-
-			Item fur = new Item("Fur", "material", "The fur of an wild animal", 1, 1);
-			Item clay = new Item("Clay", "material", "A handful of clay", 1, 1);
+			repoitem.save(fur);
+			repoitem.save(clay);
 
 			NPC enemy1 = new NPC("Goblin", level, createItem(), 20 + (level * 4), 20 + (level * 4), 20 + (level * 3), 5 + level, 25 + (level * 4), 25 + (level * 2), "enemy", 5, 40 * level, 0,1);
 			NPC enemy2 = new NPC("Wolf", level, fur, 10 + level, 10 + level, 10 + (level * 2), 15 + (level * 2), 35 + (level * 4), 5 * level, "beast", 0, 5 * level, 0,2);
@@ -142,8 +146,26 @@ public class DemoApplication {
 			repoc.save(enemy11);
 
 
-
-
+			ValuesCraftController v1 = new ValuesCraftController(1,"Healing herb",5,"Health potion");
+			ValuesCraftController v2 = new ValuesCraftController(2,"Clay",10,"Golem arm");
+			ValuesCraftController v3 = new ValuesCraftController(3,"Clay",10,"Golem leg");
+			ValuesCraftController v4 = new ValuesCraftController(4,"Clay",10,"Golem head");
+			ValuesCraftController v5 = new ValuesCraftController(5,"Clay",20,"Golem body");
+			ValuesCraftController v6 = new ValuesCraftController(6,"Fur",1,"Leather");
+			ValuesCraftController v7 = new ValuesCraftController(7,"Leather",3,"Leather helmet");
+			ValuesCraftController v8 = new ValuesCraftController(8,"Leather",4,"Leather gloves");
+			ValuesCraftController v9 = new ValuesCraftController(9,"Leather",4,"Leather boots");
+			ValuesCraftController v10 = new ValuesCraftController(10,"Leather",7,"Leather armour");
+			repoCraft.save(v1);
+			repoCraft.save(v2);
+			repoCraft.save(v3);
+			repoCraft.save(v4);
+			repoCraft.save(v5);
+			repoCraft.save(v6);
+			repoCraft.save(v7);
+			repoCraft.save(v8);
+			repoCraft.save(v9);
+			repoCraft.save(v10);
 
 		};
 	}

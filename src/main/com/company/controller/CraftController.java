@@ -1,12 +1,9 @@
 package main.com.company.controller;
 
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Multiset;
 import main.com.company.model.*;
 import main.com.company.service.CraftService;
 import main.com.company.service.InventoryService;
-import main.com.company.servicejpa.ServiceCraftController;
+import main.com.company.servicejpa.ServiceCraftJPA;
 import main.com.company.servicejpa.ServiceItemJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +18,8 @@ public class CraftController {
 
 
     @Autowired
-    private ServiceCraftController serviceCraft;
-    private  static ServiceCraftController sc;
+    private ServiceCraftJPA serviceCraft;
+    private  static ServiceCraftJPA sc;
 
     @Autowired
     private ServiceItemJPA serviceEitem;

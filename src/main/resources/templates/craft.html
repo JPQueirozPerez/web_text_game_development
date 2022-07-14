@@ -17,18 +17,22 @@
         <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
     </ul>
 </header>
-<main th:object="${player}" th:with="countStat=${0}">
+<main th:object="${craftListFromController}" th:with="countStat=${0}">
     <h1>Crafting List</h1>
     <table>
         <tr class="inventoryHead">
+            <th>Index</th>
             <th>Item</th>
             <th>Description</th>
             <th>Ingredient</th>
+            <th>Quantity of ingredient</th>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr th:each="recipe,countStat: ${craftListFromController}">
+            <td th:text="${countStat.index}"></td>
+            <td th:text="${recipe.craftItemName}"></td>
+            <td>Description</td>
+            <td th:text="${recipe.ingredientName}"></td>
+            <td th:text="${recipe.necessaryQuantity}"></td>
         </tr>
     </table>
     <a href="" onclick="history.back();">BACK</a>

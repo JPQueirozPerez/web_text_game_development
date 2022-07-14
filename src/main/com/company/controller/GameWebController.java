@@ -5,6 +5,7 @@ import main.com.company.model.NPC;
 import main.com.company.model.Player;
 import main.com.company.service.*;
 import main.com.company.servicejpa.ServiceCharacterJPA;
+import main.com.company.servicejpa.ServiceCraftJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,9 @@ public class GameWebController {
 
     @Autowired
     ServiceCharacterJPA serviceCharacterJPA;
+
+    @Autowired
+    ServiceCraftJPA serviceCraftJPA;
 
     @RequestMapping("/index")
     public String getWeb() {
@@ -146,7 +150,7 @@ public class GameWebController {
     @RequestMapping("/craft")
     public String craft(Model craftListFromController, Model playerFromController){
         Player player = (Player) playerFromController.getAttribute("player");
-//        craftListFromController.getAttribute("craftList", );
+        craftListFromController.addAttribute("craftList", serviceCraftJPA.findAll());
         return "craft";
     }
 
