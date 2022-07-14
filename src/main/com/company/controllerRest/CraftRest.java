@@ -17,6 +17,6 @@ public class CraftRest {
 
     @GetMapping("/listCraft")
     public Iterable<ValuesCraftController> listCraft(){
-        return  repoCraft.findAll();
+        return  repoCraft.findAllById();
     }
 }

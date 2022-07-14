@@ -17,7 +17,8 @@
         <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
     </ul>
 </header>
-<main th:object="${craftListFromController}" th:with="countStat=${0}">
+<!--th:with="countStat=${0}"-->
+<main th:object="${craftList}" th:with="countStat=${0}"  >
     <h1>Crafting List</h1>
     <table>
         <tr class="inventoryHead">
@@ -27,12 +28,13 @@
             <th>Ingredient</th>
             <th>Quantity of ingredient</th>
         </tr>
-        <tr th:each="recipe,countStat: ${craftListFromController}">
+        <tr th:each="recipe,countStat: ${craftList}">
             <td th:text="${countStat.index}"></td>
+            <td th:text="${recipe.id}"></td>
             <td th:text="${recipe.craftItemName}"></td>
             <td>Description</td>
             <td th:text="${recipe.ingredientName}"></td>
-            <td th:text="${recipe.necessaryQuantity}"></td>
+            <td th:text="${recipe.neccesaryQuantity}"></td>
         </tr>
     </table>
     <a href="" onclick="history.back();">BACK</a>

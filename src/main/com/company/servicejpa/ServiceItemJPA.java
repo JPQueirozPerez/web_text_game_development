@@ -91,4 +91,12 @@ public class ServiceItemJPA {
         }
         return null;
     }
+
+    public void deleteByName(String name){
+        Optional<Item> item = repoei.findByNameItem(name);
+        if (item.get()==null) {
+            throw new Exceptions("Item not found", HttpStatus.NOT_FOUND);
+        }
+        repoeitem.delete(item.get());
+    }
 }

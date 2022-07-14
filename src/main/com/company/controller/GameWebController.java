@@ -3,6 +3,7 @@ package main.com.company.controller;
 import main.com.company.model.Inventory;
 import main.com.company.model.NPC;
 import main.com.company.model.Player;
+import main.com.company.repository.RepositoryValuesCraftController;
 import main.com.company.service.*;
 import main.com.company.servicejpa.ServiceCharacterJPA;
 import main.com.company.servicejpa.ServiceCraftJPA;
@@ -44,7 +45,7 @@ public class GameWebController {
     ServiceCharacterJPA serviceCharacterJPA;
 
     @Autowired
-    ServiceCraftJPA serviceCraftJPA;
+    RepositoryValuesCraftController serviceCraftJPA;
 
     @RequestMapping("/index")
     public String getWeb() {
@@ -150,7 +151,7 @@ public class GameWebController {
     @RequestMapping("/craft") //TODO show recipes list
     public String craft(Model craftListFromController, Model playerFromController){
         Player player = (Player) playerFromController.getAttribute("player");
-        craftListFromController.addAttribute("craftList", serviceCraftJPA.findAll());
+        craftListFromController.addAttribute("craftList", serviceCraftJPA.findAllById());
         return "craft";
     }
 
