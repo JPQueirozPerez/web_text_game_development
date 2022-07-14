@@ -1,7 +1,10 @@
 package main.com.company.model;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.Proxy;
+import org.springframework.data.jpa.repository.Modifying;
 
 import javax.persistence.*;
 
@@ -14,12 +17,11 @@ import javax.persistence.*;
 @DiscriminatorValue(value = "player_har")
 public class Player extends Character {
 
-
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY )
     @JoinColumn(name = "inventory_fk")
     private Inventory inventory;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "equipment_fk")
     private Equipment equipment;
 

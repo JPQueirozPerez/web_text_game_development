@@ -19,7 +19,7 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcharacter")
     private int idcharacter;
-    @Column(name = "npc_or_player")
+    @Column(name = "ISNPC")
     private boolean type;
     private String charClass,
             name;
@@ -59,5 +59,24 @@ public class Character {
         this.totalSpeed = speed;
         this.experiencePoints = experiencePoints;
         this.charisma = charisma;
+    }
+
+    public Character(String name, int level, int maxHealthPoints, int healthPoints, int strength, int defense, int speed, int dexterity, String charClass, int money, int experiencePoints, int charisma, boolean type) {
+        this.name = name;
+        this.level = level;
+        this.maxHealthPoints = maxHealthPoints;
+        this.healthPoints = healthPoints;
+        this.strength = strength;
+        this.defense = defense;
+        this.speed = speed;
+        this.dexterity = dexterity;
+        this.charClass = charClass;
+        this.money = money;
+        this.totalStrength = strength;
+        this.totalDefense = defense;
+        this.totalSpeed = speed;
+        this.experiencePoints = experiencePoints;
+        this.charisma = charisma;
+        this.type = type;
     }
 }
