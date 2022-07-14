@@ -14,6 +14,7 @@ public class CraftRest {
     @Autowired
     RepositoryValuesCraftController repoCraft;
 
+
     @GetMapping("/listCraft")
     public Iterable<ValuesCraftController> listCraft(){
         return  repoCraft.findAll();
