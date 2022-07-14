@@ -147,7 +147,7 @@ public class GameWebController {
         return "redirect:shop";
     }
 
-    @RequestMapping("/craft")
+    @RequestMapping("/craft") //TODO show recipes list
     public String craft(Model craftListFromController, Model playerFromController){
         Player player = (Player) playerFromController.getAttribute("player");
         craftListFromController.addAttribute("craftList", serviceCraftJPA.findAll());
