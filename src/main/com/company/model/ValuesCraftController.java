@@ -18,6 +18,6 @@ public class ValuesCraftController {
     @Id
     int id;
     String ingredientName;
-    int neccesaryQuantity;
+    int necessaryQuantity;
     String craftItemName;
 }
