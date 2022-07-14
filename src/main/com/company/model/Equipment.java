@@ -25,6 +25,12 @@ public class Equipment {
             totalDefense,
             totalSpeed,
             totalStrength;
+    private boolean head,
+            body,
+            arms,
+            legs,
+            weapon1,
+            weapon2;
 
     @OneToMany(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     @JoinColumn(name = "equipment_item_fk")
@@ -38,4 +44,13 @@ public class Equipment {
         this.totalStrength = i3;
         this.equipments = equipments;
     }
+
+
+    public boolean isHead(){return this.head;}
+    public boolean isBody(){return this.body;}
+    public boolean isArms(){return this.arms;}
+    public boolean isLegs(){return this.legs;}
+    public boolean isWeapon1(){return this.weapon1;}
+    public boolean isWeapon2(){return this.weapon2;}
+
 }

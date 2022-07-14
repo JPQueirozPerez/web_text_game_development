@@ -26,9 +26,8 @@ public class Item {
             type;
     private int index,
             price,
-            quantity;
-
-
+            quantity,
+            choice;
 
 
     public Item(String name, String type, String description, int price, int quantity) {
@@ -37,6 +36,16 @@ public class Item {
         this.description = description;
         this.price = price;
         this.quantity = quantity;
+    }
+
+
+    public Item(String name, String type, String description, int price, int quantity, int choice) {
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.choice = choice;
     }
 
 

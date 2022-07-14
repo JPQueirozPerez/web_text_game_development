@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import static main.com.company.service.InventoryService.createItem;
+
 @Controller
 public class CharacterController {
 
@@ -40,7 +41,8 @@ public class CharacterController {
         Player p1 = sc.findBycharClass(name,charClass);
         Item item = si.getItem(p1);
         p1.setEquipment(new Equipment(0, 0, 0, 0, new ArrayList<>()));
-        Player p2  = CharacterService.createPlayer(new ArrayList<>(), item,p1,new Inventory(10, new ArrayList<>()));
+        Inventory inventory = p1.getInventory();
+        Player p2  = CharacterService.createPlayer(new ArrayList<>(), item,p1,inventory);
         return p2;
     }
 
@@ -65,6 +67,15 @@ public class CharacterController {
         return npc;
 
 
+    }
+
+    public static int enemyLevelCalculation(int playerLevel){
+        int level;
+        if (!(playerLevel < 4)) {
+            return level = new Random().nextInt((playerLevel - 3), (playerLevel + 4));
+        } else {
+            return level = new Random().nextInt( 1, playerLevel+4);
+        }
     }
 
 }

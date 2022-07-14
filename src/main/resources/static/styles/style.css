@@ -41,9 +41,10 @@
 }
 
 .button {
+    background-color: #967444;
     margin-top: 10px;
     width: 100px;
-    height: 30px;
+    height: 35px;
 }
 
 .characterTable th{
@@ -98,18 +99,12 @@ a:hover {
 
 body {
     background-color: #45743e;
-    height: 100vh;
+    height: 90vh;
     margin: 0 10px;
 }
 
 button:hover {
     cursor: pointer;
-}
-
-header {
-    height: 30%;
-    display: flex;
-    flex-direction: column;
 }
 
 footer a:hover {
@@ -120,13 +115,34 @@ footer {
     height: 5%;
 }
 
+header {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=text] {
+   border-color: #967444;
+   border-width: 3px;
+}
+
+input[type=text]:focus {
+  background-color: #967444;
+  border: none;
+}
+
+main {
+    height: 65%;
+    margin-bottom: 70px;
+}
+
 
 table {
     background-color: #94c263;
     border-collapse: collapse;
     border-spacing:0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
-    margin: auto;
+    margin: 20px auto;
     width: 40%;
 }
 
@@ -134,8 +150,3 @@ ul {
     list-style-type: none;
     padding: 0;
 }
-
-main {
-    height: 65%;
-}
-

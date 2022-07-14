@@ -33,20 +33,8 @@ public class InventoryService {
 
 
    public static Item createItem() {
-        int value = new Random().nextInt(1, 8);
-        //the value 5-6 provide the error
-        EquippableItem eitem =  sp.findbyChoice(value);
-
-        if(eitem.getChoice() != 8){
-
-            Item item2 = eitem;
-
-            return  item2;
-        }
-
-       UsableItem usableItem = new UsableItem("Healing herb", "herb", "This herb has medicinal capabilities", 1, 1, "healing", 3,8);
-       Item item1 = usableItem;
-        return item1;
+        int value = new Random().nextInt(1, 9);
+       return sp.findByChoiceMultiply(value);
     }
 
     public static boolean compareItems(List<Item> items, Item newItemToAdd) {

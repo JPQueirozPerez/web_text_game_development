@@ -16,7 +16,7 @@ import javax.persistence.*;
 @DiscriminatorValue(value = "usableItem_itemc")
 public class UsableItem extends Item{
     String use;
-    int value,choise;
+    int value,choice;
 
 
     public UsableItem(String name, String type, String description, int price, int quantity, String use, int value) {
@@ -24,10 +24,10 @@ public class UsableItem extends Item{
         this.use = use;
         this.value = value;
     }
-    public UsableItem(String name, String type, String description, int price, int quantity, String use, int value,int choise) {
+    public UsableItem(String name, String type, String description, int price, int quantity, String use, int value,int choice) {
         super(name, type, description, price, quantity);
         this.use = use;
         this.value = value;
-        this.choise = choise;
+        this.choice = choice;
     }
 }

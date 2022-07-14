@@ -1,9 +1,11 @@
 package main.com.company.controller;
 
+import main.com.company.model.Inventory;
 import main.com.company.model.NPC;
 import main.com.company.model.Player;
 import main.com.company.service.*;
 import main.com.company.servicejpa.ServiceCharacterJPA;
+import main.com.company.servicejpa.ServiceCraftJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,7 @@ import static main.com.company.controller.CharacterController.createPlayer;
 
 @Controller
 @RequestMapping("/game")
-@SessionAttributes({"player", "enemy", "playerInventory"})
+@SessionAttributes({"player", "enemy", "shopInventory"})
 public class GameWebController {
     @Autowired
     CharacterService characterService;
@@ -41,6 +43,9 @@ public class GameWebController {
     @Autowired
     ServiceCharacterJPA serviceCharacterJPA;
 
+    @Autowired
+    ServiceCraftJPA serviceCraftJPA;
+
     @RequestMapping("/index")
     public String getWeb() {
         return "index";
@@ -54,7 +59,7 @@ public class GameWebController {
     }
 
     @RequestMapping("/newPlayer")
-    public String newPlayer(@RequestParam("name") String name, @RequestParam("charClass") String charClass, Model playerFromController, Model playerInventoryFromController){
+    public String newPlayer(@RequestParam("name") String name, @RequestParam("charClass") String charClass, Model playerFromController){
         Player player = createPlayer(name, charClass);
         playerFromController.addAttribute("player", player);
         return "redirect:mainGame";
@@ -75,7 +80,7 @@ public class GameWebController {
     @RequestMapping("/item")
     public String item(Model playerFromController, @RequestParam("option") int option) {
         Player player = (Player) playerFromController.getAttribute("player");
-        InventoryService.equippingOrUsingObject(player, player.getInventory().getItems().get(option).getIndex()); //TODO change option int to the value of the chosen item
+        InventoryService.equippingOrUsingObject(player, player.getInventory().getItems().get(option).getIndex());
         return "redirect:inventory";
     }
 
@@ -109,6 +114,44 @@ public class GameWebController {
         if(player.getTotalSpeed() <= enemy.getTotalSpeed()) FightService.enemyTurn(enemy, player);
         else FightService.playerTurn(enemy, player);
         return "redirect:fight";
+    }
+
+    @RequestMapping("/shopInventory")
+    public String shopInventory(Model shopInventoryFromController){
+        Inventory inventory = ShopController.createShopInventory();
+        shopInventoryFromController.addAttribute("shopInventory", inventory);
+        return "shop";
+    }
+
+
+    @RequestMapping("/shop")
+    public String shop(Model playerFromController, Model shopInventoryFromController){ //TODO problem with instanceOf
+        Inventory shopInventory = (Inventory) shopInventoryFromController.getAttribute("shopInventory");
+        Player player = (Player) playerFromController.getAttribute("player");
+        return "shop"; //TODO Shop inventory only having 100 items and not 200
+    }
+
+    @RequestMapping("/buy")
+    public String buy(Model playerFromController, Model shopInventoryFromController, @RequestParam("option") int option){
+        Inventory shopInventory = (Inventory) shopInventoryFromController.getAttribute("shopInventory");
+        Player player = (Player) playerFromController.getAttribute("player");
+        ShopService.shopping(1, shopInventory, option, player, 1);
+        return "redirect:shop";
+    }
+
+    @RequestMapping("/sell")
+    public String sell(Model playerFromController, Model shopInventoryFromController, @RequestParam("option") int option){
+        Inventory shopInventory = (Inventory) shopInventoryFromController.getAttribute("shopInventory");
+        Player player = (Player) playerFromController.getAttribute("player");
+        ShopService.shopping(2, shopInventory, option, player, 1);
+        return "redirect:shop";
+    }
+
+    @RequestMapping("/craft") //TODO show recipes list
+    public String craft(Model craftListFromController, Model playerFromController){
+        Player player = (Player) playerFromController.getAttribute("player");
+        craftListFromController.addAttribute("craftList", serviceCraftJPA.findAll());
+        return "craft";
     }
 
     @RequestMapping("/underConstruction")

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/favicon.png"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}"/>
+    <title>Game</title>
+</head>
+<body>
+<header>
+    <div class="header-img"><img src="/img/logo.jpg"></div>
+    <ul class="header-nav">
+        <li><a th:href="@{/game/underConstruction}">OPTIONS</a></li>
+        <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
+    </ul>
+</header>
+<main>
+    <span th:object="${player}" th:with="countStat=${0}">
+    <h1><span th:text="*{name}"></span>'s Inventory</h1>
+    <table>
+        <tr class="inventoryHead">
+            <th>Item</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Sell</th>
+            <th>Defense</th>
+            <th>Speed</th>
+            <th>Strength</th>
+        </tr>
+        <tr th:each="item, countStat: *{inventory.items}">
+            <td th:text="${item.name}"/>
+            <td th:text="${item.description}"/>
+            <td>x<span th:text="${item.quantity}"/></td>
+            <td>x<span th:text="${item.price}"/></td>
+<!--             <span th:if="${item instanceof T(EquipableItem)}">-->
+<!--                    <td th:text="${item.defense > 0} ? '+' + ${item.defense} : ${item.defense}"/>-->
+<!--                    <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>-->
+<!--                    <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>-->
+<!--             </span>-->
+            <td> <a th:href="@{/game/sell(option=${countStat.index})}"> <button type="button" class="button">Sell <span th:text="${item.name}"/></button> </a></td>
+        </tr>
+    </table>
+        </span>
+
+    <span th:object="${shopInventory}" th:with="countStat=${0}">
+        <h1>Shop's Inventory </h1>
+        <table>
+            <tr class="inventoryHead">
+                <th>Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Buy</th>
+                <th>Defense</th>
+                <th>Speed</th>
+                <th>Strength</th>
+            </tr>
+            <tr th:each="item, countStat: *{items}">
+                <td th:text="${item.name}"/>
+                <td th:text="${item.description}"/>
+                <td>x<span th:text="${item.quantity}"/></td>
+                <td>x<span th:text="${item.price}"/></td>
+<!--                 <span th:if="${item instanceof T(EquipableItem)}">-->
+<!--                    <td th:text="${item.defense > 0} ? '+' + ${item.defense} : ${item.defense}"/>-->
+<!--                    <td th:text="${item.speed > 0} ? '+' + ${item.speed} : ${item.speed}"/>-->
+<!--                    <td th:text="${item.strength > 0} ? '+' + ${item.strength} : ${item.strength}"/>-->
+<!--                </span>-->
+                <td> <a th:href="@{/game/buy(option=${countStat.index})}"><button type="button" class="button">Buy <span th:text="${item.name}"/></button></a></td>
+            </tr>
+        </table>
+        </span>
+    <a th:href="@{/game/mainGame}">BACK TO GAME</a>
+</main>
+<footer>
+    <a th:href="@{/game/underConstruction}">ABOUT US</a>
+</footer>
+</body>
+</html>

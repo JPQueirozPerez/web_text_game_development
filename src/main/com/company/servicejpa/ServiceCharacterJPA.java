@@ -22,8 +22,6 @@ public class ServiceCharacterJPA {
     @PostConstruct
     public void init(){
         this.repoC = repoChar;
-
-
     }
 
     public Player findBycharClass(String name, String charClass ){

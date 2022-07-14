@@ -26,13 +26,13 @@
 
                 <div th:object="${charClass}"></div>
                 <label for="charClass">CHOOSE CLASS</label>
-                <select id="charClass" name="charClass">
+                <select id="charClass" name="charClass" class="button">
                     <option th:each="charClass : ${classesFromController}"
                             th:value="${charClass.charClass}"
                             th:text="${charClass.charClass}"></option>
                 </select>
 
-                <input type="submit" value="START GAME" class="w3-button w3-padding-16 w3-light-grey w3-right w3-margin-right"/>
+                <input type="submit" value="START GAME" class="button" />
             </form>
         </div>
     </main>

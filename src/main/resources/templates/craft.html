@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <html xmlns:th="http://www.thymeleaf.org"></html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}" />
+    <title>Crafting</title>
+</head>
+<body>
+<header>
+    <div class="header-img"><img src="/img/logo.jpg"></div>
+    <ul class="header-nav">
+        <li><a th:href="@{/game/underConstruction}">OPTIONS</a></li>
+        <li><a th:href="@{/game/underConstruction}">EN/ES</a></li>
+    </ul>
+</header>
+<main th:object="${craftListFromController}" th:with="countStat=${0}">
+    <h1>Crafting List</h1>
+    <table>
+        <tr class="inventoryHead">
+            <th>Index</th>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Ingredient</th>
+            <th>Quantity of ingredient</th>
+        </tr>
+        <tr th:each="recipe,countStat: ${craftListFromController}">
+            <td th:text="${countStat.index}"></td>
+            <td th:text="${recipe.craftItemName}"></td>
+            <td>Description</td>
+            <td th:text="${recipe.ingredientName}"></td>
+            <td th:text="${recipe.necessaryQuantity}"></td>
+        </tr>
+    </table>
+    <a href="" onclick="history.back();">BACK</a>
+</main>
+<footer>
+    <a th:href="@{/game/underConstruction}">ABOUT US</a>
+</footer>
+</body>
+</html>

@@ -67,9 +67,7 @@ public class FightService {
         boolean turn = true;
 //        if (nextTurn.equals("exit")) IOView.gameLoopView(player);
         if (enemy.getHealthPoints() <= 0) {
-            levelUp(player);
-            FightView.fightingMessages("9", enemy, player);
-            FightView.fightingMessages("10", enemy, player);
+            addExperience(player, enemy);
             Item newItem = enemy.getTreasure();
             player.setInventory(InventoryController.addItemToInventory(player.getInventory().getItems(), player.getInventory(), newItem));
             CharacterService.addingMoney(player, enemy);
@@ -87,16 +85,6 @@ public class FightService {
                 enemyTurn(enemy, player);
                 turn = true;
             }
-//            switch (nextTurn) {
-//                case "enemy": {
-//                    enemyTurn(enemy, player);
-//                    break;
-//                }
-//                case "player": {
-//                    playerTurn(enemy, player);
-//                    break;
-//                }
-//            }
         }
     }
 
@@ -119,6 +107,17 @@ public class FightService {
         player.setSpeed(player.getSpeed() + valueGained());
         player.setDexterity(player.getDexterity() + valueGained());
         CharacterService.setPlayerTotalCharacteristics(player);
+    }
+
+    public static void addExperience(Player player, NPC enemy) {
+        player.setExperiencePoints(player.getExperiencePoints()+enemy.getExperiencePoints());
+        FightView.fightingMessages("12", enemy, player);
+        while(true){
+            if(player.getExperiencePoints()>=player.getMaxExperiencePoints()*player.getLevel()){
+                CharacterService.levelUp(player);
+            }else break;
+        }
+        FightView.fightingMessages("13", enemy, player);
     }
 
     public static int valueGained() {
